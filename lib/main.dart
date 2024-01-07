@@ -1,3 +1,4 @@
+// Material package for Material Design Components
 import 'package:flutter/material.dart';
 
 // Entry Point of App
@@ -12,21 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Ganpati Motor Services',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      home: const Welcome(),
+      home: const Text('Demo'),
     );
-  }
-}
-
-class Welcome extends StatelessWidget {
-  const Welcome({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
