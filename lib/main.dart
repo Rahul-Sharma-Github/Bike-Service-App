@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 
 // External Packages
 
-// Device Preview
+// Device Preview Package
 import 'package:device_preview/device_preview.dart';
+
+// GetX Package
+import 'package:get/get.dart';
 
 // Page Imports
 
@@ -28,8 +31,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    // GetMaterialApp to access all GetX functionality in our App
+    return GetMaterialApp(
       // changing app's settings, so Device Preview can run properly
+      useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
 
