@@ -60,7 +60,16 @@ class MyApp extends StatelessWidget {
       ),
 
       // First Page to show on screen
-      home: const SignUp(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return const Home();
+          } else {
+            return const SignUp();
+          }
+        },
+      ),
     );
   }
 }
