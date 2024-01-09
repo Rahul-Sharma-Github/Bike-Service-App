@@ -61,11 +61,14 @@ class MyApp extends StatelessWidget {
 
       // First Page to show on screen
       home: StreamBuilder(
+        // Firebase Auth Stream to detect in Realtime if a User Signed In or Not
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            // if Signed In then show Home Page
             return const Home();
           } else {
+            // if not Signed In then show SignUp Page
             return const SignUp();
           }
         },
