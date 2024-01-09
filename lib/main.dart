@@ -78,3 +78,17 @@ class SignUp extends StatelessWidget {
     );
   }
 }
+
+// Home
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder(
+      child: Center(
+        child: Text('Home Page'),
+      ),
+    );
+  }
+}
