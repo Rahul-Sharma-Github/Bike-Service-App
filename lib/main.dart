@@ -9,10 +9,19 @@ import 'package:device_preview/device_preview.dart';
 // GetX Package
 import 'package:get/get.dart';
 
+// Firebase Core + Firebase_Options Packages
+import 'package:firebase_core/firebase_core.dart';
+import 'package:bike_service_app/firebase_options.dart';
+
 // Page Imports
 
 // Entry Point of App
-void main() {
+Future<void> main() async {
+  // it will initialize our Flutter Firebase app before starting the App
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     // Device Preview Settings
     DevicePreview(
