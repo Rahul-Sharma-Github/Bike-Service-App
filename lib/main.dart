@@ -13,6 +13,9 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:bike_service_app/firebase_options.dart';
 
+// Firebase Auth Package
+import 'package:firebase_auth/firebase_auth.dart';
+
 // Page Imports
 
 // Entry Point of App
