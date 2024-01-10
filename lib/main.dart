@@ -1,7 +1,7 @@
 // Material package for Material Design Components
 import 'package:flutter/material.dart';
 
-// External Packages
+//// External Packages
 
 // Device Preview Package
 import 'package:device_preview/device_preview.dart';
@@ -16,12 +16,16 @@ import 'package:bike_service_app/firebase_options.dart';
 // Firebase Auth Package
 import 'package:firebase_auth/firebase_auth.dart';
 
+// Firebase Firestore Package
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 // Page Imports
 
 // Entry Point of App
 Future<void> main() async {
   // it will initialize our Flutter Firebase app before starting the App
   WidgetsFlutterBinding.ensureInitialized();
+  // Initilizing Firebase API
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
