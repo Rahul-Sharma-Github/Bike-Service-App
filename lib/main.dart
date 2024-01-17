@@ -1,4 +1,5 @@
 // Material package for Material Design Components
+import 'package:bike_service_app/app/features/authentication/presentation/pages/signup_page/signup_page.dart';
 import 'package:flutter/material.dart';
 
 //// External Packages
@@ -19,7 +20,9 @@ import 'package:bike_service_app/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 // Firebase Firestore Package
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'app/features/authentication/presentation/pages/home_page/home_page.dart';
 
 //// Page Imports
 
@@ -72,40 +75,12 @@ class MyApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             // if Signed In then show Home Page
-            return const Home();
+            return const HomePage();
           } else {
             // if not Signed In then show SignUp Page
-            return const SignUp();
+            return const SignUpPage();
           }
         },
-      ),
-    );
-  }
-}
-
-// Demo of SignUp Page
-class SignUp extends StatelessWidget {
-  const SignUp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder(
-      child: Center(
-        child: Text('SignUp Page'),
-      ),
-    );
-  }
-}
-
-// Home
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder(
-      child: Center(
-        child: Text('Home Page'),
       ),
     );
   }
