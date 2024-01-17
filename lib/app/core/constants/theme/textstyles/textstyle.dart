@@ -21,13 +21,13 @@ class AppTextStyleTheme {
   );
 
   // TextStyles for Page Heading
-  static const TextStyle mainTitleText = TextStyle(
+  static const TextStyle headingMainTitleText = TextStyle(
     color: Color(0xff000000),
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle secondaryTitleText = TextStyle(
+  static const TextStyle headingSecondaryTitleText = TextStyle(
     color: Color(0xff3B3B3B),
     fontSize: 16,
     fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class AppTextStyleTheme {
   );
 
   // TextStyles for Button Text
-  static const TextStyle mainButtonText = TextStyle(
+  static const TextStyle buttonMainText = TextStyle(
     color: Color(0xff000000),
     fontSize: 14,
     fontWeight: FontWeight.normal,
