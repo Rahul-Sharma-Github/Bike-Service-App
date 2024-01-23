@@ -1,4 +1,4 @@
-import '../../models/signup_model/signup_model.dart';
+import '../../entities/signup_user_entity.dart';
 import '../../repositories/signup_repositories/signup_repositories.dart';
 
 class CreateUserUseCase {
@@ -6,7 +6,7 @@ class CreateUserUseCase {
 
   CreateUserUseCase(this.signUpRepositories);
 
-  Future<void> execute(User user) async {
+  Future<void> call(SignUpUserEntity user) async {
     return await signUpRepositories.createUser(user);
   }
 }

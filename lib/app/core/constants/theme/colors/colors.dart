@@ -11,7 +11,7 @@ class AppColors {
 
   // Input Text Box Colors
   static const Color inputTextBoxLabelColor = Color(0xff000000);
-  static const Color inputTextBoxInnerColor = Color(0xffD9D9D9);
+  static const Color inputTextBoxInnerColor = Color(0xffF4EFEF);
 
   // Button Color
   static const Color mainButtonColor = Color(0xff343434);

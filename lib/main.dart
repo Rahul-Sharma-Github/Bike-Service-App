@@ -1,4 +1,5 @@
 // Material package for Material Design Components
+import 'package:bike_service_app/app/features/authentication/presentation/app_bindings/app_bindings.dart';
 import 'package:bike_service_app/app/features/authentication/presentation/pages/signup_page/signup_page.dart';
 import 'package:flutter/material.dart';
 
@@ -64,9 +65,12 @@ class MyApp extends StatelessWidget {
 
       title: 'Ganpati Motor Services',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // primarySwatch: Colors.grey,
         useMaterial3: true,
       ),
+
+      // App Bindings initialization
+      initialBinding: AppBindings(),
 
       // First Page to show on screen
       home: StreamBuilder(
@@ -78,7 +82,7 @@ class MyApp extends StatelessWidget {
             return const HomePage();
           } else {
             // if not Signed In then show SignUp Page
-            return const SignUpPage();
+            return SignUpPage();
           }
         },
       ),

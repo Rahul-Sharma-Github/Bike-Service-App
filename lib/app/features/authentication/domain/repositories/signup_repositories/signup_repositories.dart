@@ -1,5 +1,5 @@
-import '../../models/signup_model/signup_model.dart';
+import '../../entities/signup_user_entity.dart';
 
 abstract class SignUpRepositories {
-  Future<void> createUser(User user);
+  Future<void> createUser(SignUpUserEntity user);
 }

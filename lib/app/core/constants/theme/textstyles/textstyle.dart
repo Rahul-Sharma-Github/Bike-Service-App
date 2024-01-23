@@ -4,20 +4,27 @@ class AppTextStyleTheme {
   // TextStyles for Welcome Page
   static const TextStyle welcomeHeadingTitleText = TextStyle(
     color: Color(0xffFFFFFF),
-    fontSize: 28,
+    fontSize: 36,
     fontWeight: FontWeight.bold,
   );
 
   static const TextStyle welcomeHeadingSubtitleText = TextStyle(
     color: Color(0xffFFFFFF),
     fontSize: 26,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
   );
 
   static const TextStyle welcomeHeadingSubtitleDescriptionText = TextStyle(
     color: Color(0xffFFFFFF),
-    fontSize: 26,
-    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+
+  // TextStyles for TextFormField Label
+  static const TextStyle textFormFieldLabelText = TextStyle(
+    color: Color(0xff000000),
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
   );
 
   // TextStyles for Page Heading
@@ -61,8 +68,8 @@ class AppTextStyleTheme {
 
   // TextStyles for Button Text
   static const TextStyle buttonMainText = TextStyle(
-    color: Color(0xff000000),
-    fontSize: 14,
+    color: Color(0xffFFFFFF),
+    fontSize: 22,
     fontWeight: FontWeight.normal,
   );
 
