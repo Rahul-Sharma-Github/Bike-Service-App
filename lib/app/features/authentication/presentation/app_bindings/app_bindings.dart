@@ -7,10 +7,13 @@ import 'package:get/get.dart';
 class AppBindings extends Bindings {
   @override
   void dependencies() {
+    // Bindings for SignUp a User
     Get.lazyPut<SignUpRepositories>(() => SignUpRepositoryImpl());
 
     Get.lazyPut(() => CreateUserUseCase(Get.find()));
 
     Get.put(SignUpController(Get.find()));
+
+    // Bindings for SignIn a User
   }
 }

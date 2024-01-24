@@ -47,10 +47,13 @@ class HomePage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        '"Your Bike\'s Best Companion"',
-                        style: AppTextStyleTheme
-                            .welcomeHeadingSubtitleDescriptionText,
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          '"Your Bike\'s Best Companion"',
+                          style: AppTextStyleTheme
+                              .welcomeHeadingSubtitleDescriptionText,
+                        ),
                       ),
                     ],
                   ),
