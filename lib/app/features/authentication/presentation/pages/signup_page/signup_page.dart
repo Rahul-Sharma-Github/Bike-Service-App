@@ -184,7 +184,7 @@ class SignUpPage extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    Get.to(() => const SignInPage());
+                                    Get.to(() => SignInPage());
                                   },
                                   child: const Text(
                                     'Sign In',
@@ -229,27 +229,7 @@ class SignUpPage extends StatelessWidget {
                                     signUpController.emailController.value.text,
                                     signUpController
                                         .passwordController.value.text);
-
-                                // Debuging
-                                // Checking saved Values
-                                debugPrint('Form Saved');
-                                debugPrint(
-                                    'Name = ${signUpController.nameController.value.text}');
-                                debugPrint(
-                                    'email = ${signUpController.emailController.value.text}');
-                                debugPrint(
-                                    'password = ${signUpController.passwordController.value.text}');
-                              } else {
-                                // Debuging
-                                // Checking saved invalid Values
-                                debugPrint('Current Form State is not valid');
-                                debugPrint(
-                                    'Name = ${signUpController.nameController.value.text}');
-                                debugPrint(
-                                    'email = ${signUpController.emailController.value.text}');
-                                debugPrint(
-                                    'password = ${signUpController.passwordController.value.text}');
-                              }
+                              } else {}
                             },
                             child: const Padding(
                               padding: EdgeInsets.symmetric(vertical: 16),

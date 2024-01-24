@@ -48,10 +48,8 @@ class SignUpController extends GetxController {
       await createUserUseCase(
         SignUpUserEntity(name: name, email: email, password: password),
       );
-      Get.snackbar('Success', 'User saved successfully');
     } catch (e) {
       debugPrint('Firestore error in SignUpController = $e');
-      Get.snackbar('Error', 'Failed to save user');
     }
   }
 }

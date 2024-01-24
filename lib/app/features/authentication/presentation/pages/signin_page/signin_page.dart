@@ -1,13 +1,17 @@
 // ignore_for_file: sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../core/constants/theme/colors/colors.dart';
 import '../../../../../core/constants/theme/textstyles/textstyle.dart';
+import '../../controllers/signin_page/signin_controller.dart';
 import '../../widgets/header_widget.dart';
 
 class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+  SignInPage({super.key});
+
+  final SignInController signInController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +46,7 @@ class SignInPage extends StatelessWidget {
                   ),
                   child: SingleChildScrollView(
                     child: Form(
-                      // key: signUpController.formKey.value,
+                      key: signInController.formKey.value,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -66,8 +70,8 @@ class SignInPage extends StatelessWidget {
                                   height: 5,
                                 ),
                                 TextFormField(
-                                  // controller:
-                                  // signUpController.nameController.value,
+                                  controller:
+                                      signInController.emailController.value,
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: const InputDecoration(
                                     contentPadding:
@@ -77,8 +81,9 @@ class SignInPage extends StatelessWidget {
                                     border: OutlineInputBorder(),
                                   ),
                                   validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Please Enter Email';
+                                    if (value!.isEmpty ||
+                                        !value.contains('@')) {
+                                      return 'Please Enter Valid Email';
                                     } else {
                                       return null;
                                     }
@@ -106,8 +111,8 @@ class SignInPage extends StatelessWidget {
                                   height: 5,
                                 ),
                                 TextFormField(
-                                  // controller:
-                                  //     signUpController.passwordController.value,
+                                  controller:
+                                      signInController.passwordController.value,
                                   keyboardType: TextInputType.visiblePassword,
                                   decoration: const InputDecoration(
                                     contentPadding:
@@ -140,7 +145,7 @@ class SignInPage extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    // Get.to(() =>  SignUpPage());
+                                    Get.back();
                                   },
                                   child: const Text(
                                     'Sign Up',
@@ -171,41 +176,38 @@ class SignInPage extends StatelessWidget {
                             ),
                             onPressed: () async {
                               // Checking if Form is Valid or not
-                              // if (signUpController.formKey.value.currentState!
-                              //     .validate()) {
-                              //   // if Form is valid without any error
-                              //   // then we save the current state of form with values
-                              //   signUpController.formKey.value.currentState!
-                              //       .save();
+                              if (signInController.formKey.value.currentState!
+                                  .validate()) {
+                                // if Form is valid without any error
+                                // then we save the current state of form with values
+                                signInController.formKey.value.currentState!
+                                    .save();
 
-                              //   // Saving Form Field values
-                              //   // Then Storing New User Account to Firebase Auth
-                              //   signUpController.saveFormValues(
-                              //       signUpController.nameController.value.text,
-                              //       signUpController.emailController.value.text,
-                              //       signUpController
-                              //           .passwordController.value.text);
+                                // Saving Form Field values
+                                // Then Storing New User Account to Firebase Auth
+                                signInController.saveFormValues(
+                                    signInController.emailController.value.text,
+                                    signInController
+                                        .passwordController.value.text);
 
-                              //   // Debuging
-                              //   // Checking saved Values
-                              //   debugPrint('Form Saved');
-                              //   debugPrint(
-                              //       'Name = ${signUpController.nameController.value.text}');
-                              //   debugPrint(
-                              //       'email = ${signUpController.emailController.value.text}');
-                              //   debugPrint(
-                              //       'password = ${signUpController.passwordController.value.text}');
-                              // } else {
-                              //   // Debuging
-                              //   // Checking saved invalid Values
-                              //   debugPrint('Current Form State is not valid');
-                              //   debugPrint(
-                              //       'Name = ${signUpController.nameController.value.text}');
-                              //   debugPrint(
-                              //       'email = ${signUpController.emailController.value.text}');
-                              //   debugPrint(
-                              //       'password = ${signUpController.passwordController.value.text}');
-                              // }
+                                // Debuging
+                                // Checking saved Values
+                                debugPrint('Form Saved');
+
+                                debugPrint(
+                                    'email = ${signInController.emailController.value.text}');
+                                debugPrint(
+                                    'password = ${signInController.passwordController.value.text}');
+                              } else {
+                                // Debuging
+                                // Checking saved invalid Values
+                                debugPrint('Current Form State is not valid');
+
+                                debugPrint(
+                                    'email = ${signInController.emailController.value.text}');
+                                debugPrint(
+                                    'password = ${signInController.passwordController.value.text}');
+                              }
                             },
                             child: const Padding(
                               padding: EdgeInsets.symmetric(vertical: 16),
