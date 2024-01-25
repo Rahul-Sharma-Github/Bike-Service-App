@@ -5,13 +5,14 @@ import 'package:bike_service_app/app/features/authentication/domain/use_cases/si
 import 'package:bike_service_app/app/features/authentication/presentation/controllers/signup_page/signup_controller.dart';
 import 'package:get/get.dart';
 
-import '../../data/repositories_implement/signin_repositories_impl/signin_repositories_impl.dart';
-import '../../domain/repositories/signin_repositories/signin_repositories.dart';
-import '../controllers/signin_page/signin_controller.dart';
+import '../../features/authentication/data/repositories_implement/signin_repositories_impl/signin_repositories_impl.dart';
+import '../../features/authentication/domain/repositories/signin_repositories/signin_repositories.dart';
+import '../../features/authentication/presentation/controllers/signin_page/signin_controller.dart';
 
 class AppBindings extends Bindings {
   @override
   void dependencies() {
+    /// authentication feature Bindings
     // Bindings for SignUp a User
     Get.lazyPut<SignUpRepositories>(() => SignUpRepositoryImpl());
 
@@ -25,5 +26,8 @@ class AppBindings extends Bindings {
     Get.lazyPut(() => SignInUserUseCase(Get.find()));
 
     Get.put(SignInController(Get.find()));
+
+    /// my_services feature bindings
+    //
   }
 }
