@@ -42,6 +42,38 @@ class ServicePageRepoImpl implements ServicePageRepository {
     } catch (e) {
       debugPrint('Error in ServicePageRepoImpl = $e');
     }
-    throw UnimplementedError('Error in ServicePageRepoImpl');
+    throw UnimplementedError(
+        'Error in ServicePageRepoImpl class for serviceList()');
+  }
+
+  @override
+  List<Map<String, dynamic>> customerTestimonialList() {
+    try {
+      return [
+        {
+          "name": "Rajesh Kumar",
+          "city": "Beawar, Rajasthan",
+          "description":
+              "Incredible bike service experience! Quick turnaround, fair pricing, and my bike runs like new. Highly recommend these guys for hassle-free maintenance."
+        },
+        {
+          "name": "Ananya Singh",
+          "city": "Beawar, Rajasthan",
+          "description":
+              "The team here knows bikes inside out! Professional service, genuine advice, and my ride feels smoother than ever. No more worries about maintenance headaches."
+        },
+        {
+          "name": "Vikas Sahu",
+          "city": "Beawar, Rajasthan",
+          "description":
+              "After service, there are no problems left in my bike. Excellent Service !"
+        }
+      ];
+    } catch (e) {
+      debugPrint(
+          'Error in ServicePageRepoImpl class for customerTestimonialList() = $e');
+    }
+
+    throw UnimplementedError();
   }
 }

@@ -5,7 +5,11 @@ class ServicePageUseCase {
 
   ServicePageUseCase(this.servicePageRepository);
 
-  List<Map<String, dynamic>> call() {
+  List<Map<String, dynamic>> callForServiceList() {
     return servicePageRepository.serviceList();
+  }
+
+  List<Map<String, dynamic>> callForCustomerTestimonialList() {
+    return servicePageRepository.customerTestimonialList();
   }
 }

@@ -6,17 +6,27 @@ class ServicePageController extends GetxController {
 
   ServicePageController(this.servicePageUseCase);
 
-  // List of Maps
+  // List of Maps for Featured Services List
   var serviceListData = [].obs;
+
+  // List of Maps for Customer Testmonial List
+  var customerTestimonialListData = [].obs;
 
   @override
   void onInit() {
     super.onInit();
-    fetchData();
+    fetchServiceListData();
+    fetchCustomerTestimonialListData();
   }
 
-  // Fetching Data
-  List<Map<String, dynamic>> fetchData() {
-    return serviceListData.value = servicePageUseCase.call();
+  // Fetching List of Maps for Featured Services List
+  List<Map<String, dynamic>> fetchServiceListData() {
+    return serviceListData.value = servicePageUseCase.callForServiceList();
+  }
+
+  // Fetching List of Maps for Customer Testmonial List
+  List<Map<String, dynamic>> fetchCustomerTestimonialListData() {
+    return customerTestimonialListData.value =
+        servicePageUseCase.callForCustomerTestimonialList();
   }
 }
