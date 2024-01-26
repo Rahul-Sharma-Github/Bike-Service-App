@@ -29,4 +29,21 @@ class ServicePageController extends GetxController {
     return customerTestimonialListData.value =
         servicePageUseCase.callForCustomerTestimonialList();
   }
+
+  // Other Functionalities for ServicesPage
+
+  // variable to open / close the BottomSheet
+  var isOpen = false.obs;
+
+  // variable to change current selected card's index
+  var currentIndex = 0.obs;
+
+  void bottomSheetShowClose(int index) {
+    if (!isOpen.value) {
+      currentIndex.value = index;
+      isOpen.value = true;
+    } else {
+      isOpen.value = false;
+    }
+  }
 }

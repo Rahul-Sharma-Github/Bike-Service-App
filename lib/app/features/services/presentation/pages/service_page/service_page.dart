@@ -123,7 +123,11 @@ class ServicePage extends StatelessWidget {
                                                         AppColors
                                                             .knowMoreButtonColor),
                                               ),
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                servicePageController
+                                                    .bottomSheetShowClose(
+                                                        index);
+                                              },
                                               child: const Text('Know More',
                                                   style: AppTextStyleTheme
                                                       .cardButtonText),
@@ -284,6 +288,86 @@ class ServicePage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+
+      // BottomSheet
+
+      // This BottomSheet will Open / Close according to current value of ( isOpen ) Bool variable
+      bottomSheet: Obx(
+        () => servicePageController.isOpen.value
+            ? BottomSheet(
+                showDragHandle: false,
+                enableDrag: false,
+                onClosing: () {},
+                builder: (context) {
+                  return Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 15),
+                                child: Text(
+                                  servicePageController.serviceListData[
+                                      servicePageController
+                                          .currentIndex.value]["name"],
+                                  style: AppTextStyleTheme.cardTitleText,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Flexible(
+                          fit: FlexFit.loose,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 20),
+                                  child: Text(
+                                    servicePageController.serviceListData[
+                                        servicePageController
+                                            .currentIndex.value]["description"],
+                                    style: AppTextStyleTheme.descriptionText,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                AppColors.mainButtonColor),
+                          ),
+                          onPressed: () {
+                            servicePageController.bottomSheetShowClose(0);
+                          },
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: Text(
+                              'Close',
+                              style: AppTextStyleTheme.closeButtonText,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                      ],
+                    ),
+                  );
+                },
+              )
+            : const SizedBox(),
       ),
     );
   }

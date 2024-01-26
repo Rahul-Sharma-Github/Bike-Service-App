@@ -73,6 +73,13 @@ class AppTextStyleTheme {
     fontWeight: FontWeight.normal,
   );
 
+  // TextStyles for Button Text
+  static const TextStyle closeButtonText = TextStyle(
+    color: Color(0xffFFFFFF),
+    fontSize: 18,
+    fontWeight: FontWeight.normal,
+  );
+
   // TextStyles for ScheduleSummary Page
   static const TextStyle scheduleSummaryKeyText = TextStyle(
     color: Color(0xff000000),
