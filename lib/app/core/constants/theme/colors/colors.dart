@@ -15,7 +15,7 @@ class AppColors {
   static const knowMoreButtonColor = Color(0xff737475);
 
   // Card Colors
-  static const Color serviceCardColor = Color(0xffD9D9D9);
+  static const Color serviceCardColor = Color(0xffE3E6E9);
 
   // Service Status Color
   static const Color notStartedBoxColor = Color(0xff737475);

@@ -164,62 +164,96 @@ class ServicePage extends StatelessWidget {
               ),
               // ListView.builder for Customer Testimonials
               SizedBox(
-                height: 150,
+                height: 350,
                 child: ListView.builder(
                   physics: const ClampingScrollPhysics(),
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: servicePageController.serviceListData.length,
+                  itemCount:
+                      servicePageController.customerTestimonialListData.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      height: 100,
+                      height: 350,
                       width: 250,
                       child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        elevation: 5,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                child: Image.asset(servicePageController
-                                    .serviceListData[index]["image"]),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 10),
-                                      child: Text(
-                                        servicePageController
-                                            .serviceListData[index]["name"],
-                                        style: AppTextStyleTheme.cardTitleText,
-                                      ),
-                                    ),
-                                    ElevatedButton(
-                                      style: ButtonStyle(
-                                        shape: MaterialStateProperty.all(
-                                            const LinearBorder()),
-                                        backgroundColor:
-                                            MaterialStateProperty.all(
-                                                AppColors.knowMoreButtonColor),
-                                      ),
-                                      onPressed: () {},
-                                      child: const Text('Know More',
-                                          style:
-                                              AppTextStyleTheme.cardButtonText),
-                                    ),
-                                  ],
+                          surfaceTintColor: AppColors.backSheetColor,
+                          shadowColor: AppColors.serviceCardColor,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                const Expanded(
+                                  flex: 1,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.format_quote),
+                                    ],
+                                  ),
                                 ),
-                              ),
+                                Expanded(
+                                  flex: 4,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          servicePageController
+                                                  .customerTestimonialListData[
+                                              index]["description"],
+                                          style: AppTextStyleTheme
+                                              .customerAddressText,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            servicePageController
+                                                    .customerTestimonialListData[
+                                                index]["name"],
+                                            style: AppTextStyleTheme
+                                                .customerNameText,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            servicePageController
+                                                    .customerTestimonialListData[
+                                                index]["city"],
+                                            style: AppTextStyleTheme
+                                                .customerAddressText,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
+                          )),
                     );
                   },
                 ),
