@@ -30,7 +30,7 @@ class AppTextStyleTheme {
   // TextStyles for Page Heading
   static const TextStyle headingMainTitleText = TextStyle(
     color: Color(0xff000000),
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: FontWeight.bold,
   );
 
@@ -87,6 +87,13 @@ class AppTextStyleTheme {
   );
 
   // Global usecase TextStyles
+
+  // TextStyles for App Bar Text
+  static const TextStyle appBarText = TextStyle(
+    color: Color(0xffFFFFFF),
+    fontSize: 22,
+    fontWeight: FontWeight.normal,
+  );
 
   // TextStyles for Description Text
   static const TextStyle descriptionText = TextStyle(

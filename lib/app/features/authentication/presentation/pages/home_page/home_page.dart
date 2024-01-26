@@ -1,6 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'package:bike_service_app/app/core/constants/theme/textstyles/textstyle.dart';
+import 'package:bike_service_app/app/features/services/presentation/pages/service_page/service_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -114,9 +115,7 @@ class HomePage extends StatelessWidget {
                               AppColors.mainButtonColor),
                         ),
                         onPressed: () {
-                          Get.snackbar('Services Page', 'Work in Progress !',
-                              colorText: Colors.white);
-                          //
+                          Get.to(() => ServicePage());
                         },
                         child: const Padding(
                           padding: EdgeInsets.symmetric(vertical: 16),

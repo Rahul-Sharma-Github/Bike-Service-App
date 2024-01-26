@@ -1,5 +1,5 @@
 // Material package for Material Design Components
-import 'package:bike_service_app/app/features/authentication/presentation/app_bindings/app_bindings.dart';
+import 'package:bike_service_app/app/core/app_bindings/app_bindings.dart';
 import 'package:bike_service_app/app/features/authentication/presentation/pages/signup_page/signup_page.dart';
 import 'package:flutter/material.dart';
 

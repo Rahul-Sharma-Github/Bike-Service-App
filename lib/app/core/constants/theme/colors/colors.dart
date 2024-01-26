@@ -6,9 +6,6 @@ class AppColors {
   static const Color frontSheetColor = Color(0xffFFFFFF);
   static const Color scheduleSummarySheetColor = Color(0xffD9D9D9);
 
-  // Tab Bar Colors
-  static const Color tabBarTitleColor = Color(0xffFFFFFF);
-
   // Input Text Box Colors
   static const Color inputTextBoxLabelColor = Color(0xff000000);
   static const Color inputTextBoxInnerColor = Color(0xffF4EFEF);
