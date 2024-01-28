@@ -69,7 +69,7 @@ class AppTextStyleTheme {
   // TextStyles for Button Text
   static const TextStyle buttonMainText = TextStyle(
     color: Color(0xffFFFFFF),
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: FontWeight.normal,
   );
 

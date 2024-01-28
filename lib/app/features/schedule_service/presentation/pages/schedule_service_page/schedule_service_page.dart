@@ -4,6 +4,7 @@ import 'package:bike_service_app/app/core/constants/theme/colors/colors.dart';
 import 'package:bike_service_app/app/core/constants/theme/textstyles/textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../controllers/schedule_service_page_controller/schedule_service_page_controller.dart';
 
@@ -79,6 +80,7 @@ class ScheduleServicePage extends StatelessWidget {
                   keyboardType: TextInputType.text,
                   decoration: const InputDecoration(
                     labelText: 'Enter Bike Name / Model',
+                    hintText: 'Example = Pulsar 150cc',
                     filled: true,
                     fillColor: AppColors.inputTextBoxInnerColor,
                     border: OutlineInputBorder(),
@@ -101,6 +103,7 @@ class ScheduleServicePage extends StatelessWidget {
                   keyboardType: TextInputType.text,
                   decoration: const InputDecoration(
                     labelText: 'Enter Bike Number Plate Detail',
+                    hintText: 'Example = RJ-36-4042',
                     filled: true,
                     fillColor: AppColors.inputTextBoxInnerColor,
                     border: OutlineInputBorder(),
@@ -132,7 +135,7 @@ class ScheduleServicePage extends StatelessWidget {
                 TextFormField(
                   controller: scheduleServicePageController
                       .mobileNumberController.value,
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     labelText: 'Enter your Mobile Number',
                     filled: true,
@@ -140,8 +143,10 @@ class ScheduleServicePage extends StatelessWidget {
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
-                    if (value!.isEmpty) {
+                    if (value!.isEmpty || value.length < 10) {
                       return 'Please Enter your Mobile Number';
+                    } else if (value.length > 10) {
+                      return '10 Digit Mobile Number only';
                     } else {
                       return null;
                     }
@@ -333,6 +338,116 @@ class ScheduleServicePage extends StatelessWidget {
                     fillColor: AppColors.inputTextBoxInnerColor,
                     border: OutlineInputBorder(),
                   ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                // Heading [4]
+                const Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Schedule Service Timing',
+                        style: AppTextStyleTheme.headingMainTitleText,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                // service date
+                Obx(
+                  () => TextFormField(
+                    controller: scheduleServicePageController
+                        .serviceDateController.value,
+                    keyboardType: TextInputType.none,
+                    decoration: const InputDecoration(
+                      labelText: 'Select Date',
+                      filled: true,
+                      fillColor: AppColors.inputTextBoxInnerColor,
+                      border: OutlineInputBorder(),
+                    ),
+                    onTap: () async {
+                      // Below line stops keyboard from appearing
+                      FocusScope.of(context).requestFocus(FocusNode());
+
+                      // Show Date Picker Here
+                      try {
+                        await scheduleServicePageController.selectDate(context);
+                      } catch (e) {
+                        debugPrint('error in date picker = $e');
+                      }
+                    },
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please Select Service Date';
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                ),
+                //
+                const SizedBox(
+                  height: 15,
+                ),
+                // service Time
+                Obx(
+                  () => TextFormField(
+                    controller: scheduleServicePageController
+                        .serviceTimeController.value,
+                    keyboardType: TextInputType.none,
+                    decoration: const InputDecoration(
+                      labelText: 'Select Time',
+                      filled: true,
+                      fillColor: AppColors.inputTextBoxInnerColor,
+                      border: OutlineInputBorder(),
+                    ),
+                    onTap: () async {
+                      // Below line stops keyboard from appearing
+                      FocusScope.of(context).requestFocus(FocusNode());
+
+                      // Show Time Picker Here
+                      try {
+                        await scheduleServicePageController.selectTime(context);
+                      } catch (e) {
+                        debugPrint('error in time picker = $e');
+                      }
+                    },
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please Select Service Time';
+                      } else if (value ==
+                          DateFormat.jm().format(DateTime.now())) {
+                        return 'Please Select New Service Time';
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                // Button for navigating to ScheduleSummaryPage
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(AppColors.mainButtonColor),
+                  ),
+                  onPressed: () {},
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: Text(
+                      'View Receipt Summary >',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyleTheme.buttonMainText,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
                 ),
               ],
             ),
