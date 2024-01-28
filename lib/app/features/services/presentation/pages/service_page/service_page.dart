@@ -275,12 +275,16 @@ class ServicePage extends StatelessWidget {
                 ),
                 onPressed: () async {
                   // fetching and storing nextBookingId number | and then passing it to next page ( ScheduleServicePage )
-                  await servicePageController.fetchNextBookingId();
-                  Get.snackbar('Next Booking ID Generated !',
-                      '${servicePageController.nextBookingId.value}');
-                  await Get.to(() => ScheduleServicePage(
-                        bookingId: servicePageController.nextBookingId.value,
-                      ));
+                  try {
+                    await servicePageController.fetchNextBookingId();
+                    Get.snackbar('Next Booking ID Generated !',
+                        '${servicePageController.nextBookingId.value}');
+                    await Get.to(() => ScheduleServicePage(
+                          bookingId: servicePageController.nextBookingId.value,
+                        ));
+                  } catch (e) {
+                    debugPrint('error in ServicePage while Navigating = $e');
+                  }
                 },
                 child: const Padding(
                   padding: EdgeInsets.symmetric(vertical: 16),

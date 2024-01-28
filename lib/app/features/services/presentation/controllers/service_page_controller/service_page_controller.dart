@@ -59,16 +59,21 @@ class ServicePageController extends GetxController {
   // Method to Fetch and store total no. of document count
   Future<void> fetchNextBookingId() async {
     // Returns number of documents in users collection
-    await FirebaseFirestore.instance
-        .collection("services")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .collection("myservices")
-        .count()
-        .get()
-        .then(
-          (res) => nextBookingId.value = res.count!,
-          onError: (e) =>
-              debugPrint("Error fetching total no. of document count: $e"),
-        );
+    try {
+      await FirebaseFirestore.instance
+          .collection("services")
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection("myservices")
+          .count()
+          .get()
+          .then(
+            (res) => nextBookingId.value = res.count!,
+            onError: (e) =>
+                debugPrint("Error fetching total no. of document count: $e"),
+          );
+    } catch (e) {
+      debugPrint(
+          'error in ServicePageController in fetchNextBookingId() Method = $e');
+    }
   }
 }
