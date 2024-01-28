@@ -3,8 +3,11 @@
 import 'package:bike_service_app/app/core/constants/theme/colors/colors.dart';
 import 'package:bike_service_app/app/core/constants/theme/textstyles/textstyle.dart';
 import 'package:bike_service_app/app/features/services/presentation/controllers/service_page_controller/service_page_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../../schedule_service/presentation/pages/schedule_service_page/schedule_service_page.dart';
 
 class ServicePage extends StatelessWidget {
   ServicePage({super.key});
@@ -271,8 +274,12 @@ class ServicePage extends StatelessWidget {
                   backgroundColor:
                       MaterialStateProperty.all(AppColors.mainButtonColor),
                 ),
-                onPressed: () {
-                  // Get.to(() => ScheduleServicePage());
+                onPressed: () async {
+                  // fetching and storing nextBookingId number | and then passing it to next page ( ScheduleServicePage )
+                  // await servicePageController.fetchNextBookingId();
+                  await Get.to(() => ScheduleServicePage(
+                      // bookingId: servicePageController.nextBookingId.value,
+                      ));
                 },
                 child: const Padding(
                   padding: EdgeInsets.symmetric(vertical: 16),

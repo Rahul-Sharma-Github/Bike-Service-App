@@ -74,6 +74,7 @@ class ServicePageRepoImpl implements ServicePageRepository {
           'Error in ServicePageRepoImpl class for customerTestimonialList() = $e');
     }
 
-    throw UnimplementedError();
+    throw UnimplementedError(
+        'Error in ServicePageRepoImpl class for customerTestimonialList()');
   }
 }

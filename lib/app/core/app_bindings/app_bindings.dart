@@ -3,6 +3,10 @@ import 'package:bike_service_app/app/features/authentication/domain/repositories
 import 'package:bike_service_app/app/features/authentication/domain/use_cases/signin_usecase/signin_usecase.dart';
 import 'package:bike_service_app/app/features/authentication/domain/use_cases/signup_usecases/signup_usecases.dart';
 import 'package:bike_service_app/app/features/authentication/presentation/controllers/signup_page/signup_controller.dart';
+import 'package:bike_service_app/app/features/schedule_service/data/repositories_implement/schedule_service_repo_impl.dart';
+import 'package:bike_service_app/app/features/schedule_service/domain/repositories/schedule_service_repositories.dart';
+import 'package:bike_service_app/app/features/schedule_service/domain/use_cases/schedule_service_usecase.dart';
+import 'package:bike_service_app/app/features/schedule_service/presentation/controllers/schedule_service_page_controller/schedule_service_page_controller.dart';
 import 'package:bike_service_app/app/features/services/data/repositories_implement/service_page_repo_impl/service_page_repo_impl.dart';
 import 'package:bike_service_app/app/features/services/domain/repositories/service_page_repositories/service_page_repository.dart';
 import 'package:bike_service_app/app/features/services/domain/use_cases/service_page_usecase/service_page_usecase.dart';
@@ -32,11 +36,17 @@ class AppBindings extends Bindings {
     Get.put(SignInController(Get.find()));
 
     /// my_services feature bindings
-    //
     Get.lazyPut<ServicePageRepository>(() => ServicePageRepoImpl());
 
     Get.lazyPut(() => ServicePageUseCase(Get.find()));
 
     Get.put(ServicePageController(Get.find()));
+
+    /// schedule_service feature Bindings
+    Get.lazyPut<ScheduleServiceRepositories>(() => ScheduleServiceRepoImpl());
+
+    Get.lazyPut(() => ScheduleServicePageUseCase(Get.find()));
+
+    Get.put(ScheduleServicePageController(Get.find()));
   }
 }
