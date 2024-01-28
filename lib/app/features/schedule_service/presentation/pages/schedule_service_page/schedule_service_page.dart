@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import '../../controllers/schedule_service_page_controller/schedule_service_page_controller.dart';
 
 class ScheduleServicePage extends StatelessWidget {
+  // next Unique Booking ID stored inside this variable
   final int? bookingId;
   ScheduleServicePage({super.key, this.bookingId});
 
