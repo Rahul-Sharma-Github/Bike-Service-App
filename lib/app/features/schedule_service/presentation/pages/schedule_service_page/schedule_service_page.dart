@@ -18,6 +18,7 @@ class ScheduleServicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.backSheetColor,
       appBar: AppBar(
         centerTitle: true,
@@ -60,9 +61,11 @@ class ScheduleServicePage extends StatelessWidget {
                 // Heading [1]
                 const Row(
                   children: [
-                    Text(
-                      'Your bike details',
-                      style: AppTextStyleTheme.headingMainTitleText,
+                    Expanded(
+                      child: Text(
+                        'Your bike details',
+                        style: AppTextStyleTheme.headingMainTitleText,
+                      ),
                     ),
                   ],
                 ),
@@ -172,17 +175,21 @@ class ScheduleServicePage extends StatelessWidget {
                 // Heading [3]
                 const Row(
                   children: [
-                    Text(
-                      'Select services for your bike',
-                      style: AppTextStyleTheme.headingMainTitleText,
+                    Expanded(
+                      child: Text(
+                        'Select services for your bike',
+                        style: AppTextStyleTheme.headingMainTitleText,
+                      ),
                     ),
                   ],
                 ),
                 const Row(
                   children: [
-                    Text(
-                      'To choose the service, just check the Box',
-                      style: AppTextStyleTheme.descriptionText,
+                    Expanded(
+                      child: Text(
+                        'To choose the service, just check the Box',
+                        style: AppTextStyleTheme.descriptionText,
+                      ),
                     ),
                   ],
                 ),
@@ -287,8 +294,46 @@ class ScheduleServicePage extends StatelessWidget {
                     },
                   ),
                 ),
-
+                const SizedBox(
+                  height: 15,
+                ),
                 //
+                const Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Any additional issues in your bike ?',
+                        style: AppTextStyleTheme.descriptionText,
+                      ),
+                    ),
+                  ],
+                ),
+                const Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Describe Here - ',
+                        style: AppTextStyleTheme.descriptionText,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                // Additional Issues
+                TextFormField(
+                  maxLines: 4,
+                  controller: scheduleServicePageController
+                      .describeHereController.value,
+                  keyboardType: TextInputType.multiline,
+                  decoration: const InputDecoration(
+                    labelText: 'Describe here [ Optional ]',
+                    filled: true,
+                    fillColor: AppColors.inputTextBoxInnerColor,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
               ],
             ),
           ),
