@@ -436,7 +436,62 @@ class ScheduleServicePage extends StatelessWidget {
                     backgroundColor:
                         MaterialStateProperty.all(AppColors.mainButtonColor),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    // Checking if Form is Valid or not
+                    if (scheduleServicePageController
+                        .formKey.value.currentState!
+                        .validate()) {
+                      // if Form is valid without any error
+                      // then we save the current state of form with values
+                      scheduleServicePageController.formKey.value.currentState!
+                          .save();
+
+                      // Saving Form Field values
+                      // Then Storing New User Account to Firebase Auth
+                      // signInController.saveFormValues(
+                      //     signInController.emailController.value.text,
+                      //     signInController
+                      //         .passwordController.value.text);
+
+                      // Debuging
+                      // Checking saved Values
+                      debugPrint('Form Saved');
+
+                      debugPrint(
+                          'email = ${scheduleServicePageController.bikeNameController.value.text}');
+                      debugPrint(
+                          'password = ${scheduleServicePageController.bikeNumberPlateController.value.text}');
+                      debugPrint(
+                          'email = ${scheduleServicePageController.mobileNumberController.value.text}');
+                      debugPrint(
+                          'password = ${scheduleServicePageController.fullAdressController.value.text}');
+                      debugPrint(
+                          'email = ${scheduleServicePageController.selectedServicesListData.toList()}');
+                      debugPrint(
+                          'password = ${scheduleServicePageController.serviceDateController.value.text}');
+                      debugPrint(
+                          'password = ${scheduleServicePageController.serviceTimeController.value.text}');
+                    } else {
+                      // Debuging
+                      // Checking saved invalid Values
+                      debugPrint('Current Form State is not valid');
+
+                      debugPrint(
+                          'email = ${scheduleServicePageController.bikeNameController.value.text}');
+                      debugPrint(
+                          'password = ${scheduleServicePageController.bikeNumberPlateController.value.text}');
+                      debugPrint(
+                          'email = ${scheduleServicePageController.mobileNumberController.value.text}');
+                      debugPrint(
+                          'password = ${scheduleServicePageController.fullAdressController.value.text}');
+                      debugPrint(
+                          'email = ${scheduleServicePageController.selectedServicesListData.toList()}');
+                      debugPrint(
+                          'password = ${scheduleServicePageController.serviceDateController.value.text}');
+                      debugPrint(
+                          'password = ${scheduleServicePageController.serviceTimeController.value.text}');
+                    }
+                  },
                   child: const Padding(
                     padding: EdgeInsets.symmetric(vertical: 16),
                     child: Text(
