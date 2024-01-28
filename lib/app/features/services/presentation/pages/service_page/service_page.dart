@@ -3,7 +3,6 @@
 import 'package:bike_service_app/app/core/constants/theme/colors/colors.dart';
 import 'package:bike_service_app/app/core/constants/theme/textstyles/textstyle.dart';
 import 'package:bike_service_app/app/features/services/presentation/controllers/service_page_controller/service_page_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -276,9 +275,11 @@ class ServicePage extends StatelessWidget {
                 ),
                 onPressed: () async {
                   // fetching and storing nextBookingId number | and then passing it to next page ( ScheduleServicePage )
-                  // await servicePageController.fetchNextBookingId();
+                  await servicePageController.fetchNextBookingId();
+                  Get.snackbar('Next Booking ID Generated !',
+                      '${servicePageController.nextBookingId.value}');
                   await Get.to(() => ScheduleServicePage(
-                      // bookingId: servicePageController.nextBookingId.value,
+                        bookingId: servicePageController.nextBookingId.value,
                       ));
                 },
                 child: const Padding(

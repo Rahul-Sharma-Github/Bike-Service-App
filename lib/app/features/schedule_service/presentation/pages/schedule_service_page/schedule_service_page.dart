@@ -8,8 +8,8 @@ import 'package:get/get.dart';
 import '../../controllers/schedule_service_page_controller/schedule_service_page_controller.dart';
 
 class ScheduleServicePage extends StatelessWidget {
-  // final int? bookingId;
-  ScheduleServicePage({super.key});
+  final int? bookingId;
+  ScheduleServicePage({super.key, this.bookingId});
 
   final ScheduleServicePageController scheduleServicePageController =
       Get.find();
