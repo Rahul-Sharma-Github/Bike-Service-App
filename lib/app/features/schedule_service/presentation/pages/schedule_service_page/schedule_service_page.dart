@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../schedule_summary/presentation/pages/schedule_summary_page/schedule_summary_page.dart';
 import '../../controllers/schedule_service_page_controller/schedule_service_page_controller.dart';
 
 class ScheduleServicePage extends StatelessWidget {
@@ -419,7 +420,7 @@ class ScheduleServicePage extends StatelessWidget {
                       if (value!.isEmpty) {
                         return 'Please Select Service Time';
                       } else if (value ==
-                          DateFormat.jm().format(DateTime.now())) {
+                          DateFormat.jm().format(DateTime.now()).toString()) {
                         return 'Please Select New Service Time';
                       } else {
                         return null;
@@ -446,50 +447,70 @@ class ScheduleServicePage extends StatelessWidget {
                       scheduleServicePageController.formKey.value.currentState!
                           .save();
 
-                      // Saving Form Field values
-                      // Then Storing New User Account to Firebase Auth
-                      // signInController.saveFormValues(
-                      //     signInController.emailController.value.text,
-                      //     signInController
-                      //         .passwordController.value.text);
+                      // Passing field values to next ScheduleSummaryPage
+                      if (scheduleServicePageController
+                          .selectedServicesListData.isEmpty) {
+                        Get.snackbar('Alert',
+                            'Atleast select 1 Service from Service List to continue !');
+                      } else {
+                        Get.to(
+                          () => ScheduleSummaryPage(
+                            bikeName: scheduleServicePageController
+                                .bikeNameController.value.text,
+                            bikeNumber: scheduleServicePageController
+                                .bikeNumberPlateController.value.text,
+                            mobileNumber: scheduleServicePageController
+                                .mobileNumberController.value.text,
+                            fullAddress: scheduleServicePageController
+                                .fullAdressController.value.text,
+                            selectedServiceList: scheduleServicePageController
+                                .selectedServicesListData
+                                .toList(),
+                            serviceDate: scheduleServicePageController
+                                .serviceDateController.value.text,
+                            serviceTime: scheduleServicePageController
+                                .serviceTimeController.value.text,
+                          ),
+                        );
+                      }
 
                       // Debuging
                       // Checking saved Values
                       debugPrint('Form Saved');
 
                       debugPrint(
-                          'email = ${scheduleServicePageController.bikeNameController.value.text}');
+                          'bikeName = ${scheduleServicePageController.bikeNameController.value.text}');
                       debugPrint(
-                          'password = ${scheduleServicePageController.bikeNumberPlateController.value.text}');
+                          'bikeNumber = ${scheduleServicePageController.bikeNumberPlateController.value.text}');
                       debugPrint(
-                          'email = ${scheduleServicePageController.mobileNumberController.value.text}');
+                          'mobileNumber = ${scheduleServicePageController.mobileNumberController.value.text}');
                       debugPrint(
-                          'password = ${scheduleServicePageController.fullAdressController.value.text}');
+                          'fullAddress = ${scheduleServicePageController.fullAdressController.value.text}');
                       debugPrint(
-                          'email = ${scheduleServicePageController.selectedServicesListData.toList()}');
+                          'selectedServiceList = ${scheduleServicePageController.selectedServicesListData.toList()}');
                       debugPrint(
-                          'password = ${scheduleServicePageController.serviceDateController.value.text}');
+                          'serviceDate = ${scheduleServicePageController.serviceDateController.value.text}');
                       debugPrint(
-                          'password = ${scheduleServicePageController.serviceTimeController.value.text}');
+                          'serviceTime = ${scheduleServicePageController.serviceTimeController.value.text}');
                     } else {
                       // Debuging
                       // Checking saved invalid Values
                       debugPrint('Current Form State is not valid');
 
                       debugPrint(
-                          'email = ${scheduleServicePageController.bikeNameController.value.text}');
+                          'bikeName = ${scheduleServicePageController.bikeNameController.value.text}');
                       debugPrint(
-                          'password = ${scheduleServicePageController.bikeNumberPlateController.value.text}');
+                          'bikeNumber = ${scheduleServicePageController.bikeNumberPlateController.value.text}');
                       debugPrint(
-                          'email = ${scheduleServicePageController.mobileNumberController.value.text}');
+                          'mobileNumber = ${scheduleServicePageController.mobileNumberController.value.text}');
                       debugPrint(
-                          'password = ${scheduleServicePageController.fullAdressController.value.text}');
+                          'fullAddress = ${scheduleServicePageController.fullAdressController.value.text}');
                       debugPrint(
-                          'email = ${scheduleServicePageController.selectedServicesListData.toList()}');
+                          'selectedServiceList = ${scheduleServicePageController.selectedServicesListData.toList()}');
                       debugPrint(
-                          'password = ${scheduleServicePageController.serviceDateController.value.text}');
+                          'serviceDate = ${scheduleServicePageController.serviceDateController.value.text}');
                       debugPrint(
-                          'password = ${scheduleServicePageController.serviceTimeController.value.text}');
+                          'serviceTime = ${scheduleServicePageController.serviceTimeController.value.text}');
                     }
                   },
                   child: const Padding(

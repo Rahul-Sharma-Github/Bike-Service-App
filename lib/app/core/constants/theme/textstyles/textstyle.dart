@@ -81,6 +81,18 @@ class AppTextStyleTheme {
   );
 
   // TextStyles for ScheduleSummary Page
+  static const TextStyle scheduleSummaryTitleText = TextStyle(
+    color: Color(0xff000000),
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const TextStyle scheduleSummarySubTitleText = TextStyle(
+    color: Color(0xff000000),
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
+
   static const TextStyle scheduleSummaryKeyText = TextStyle(
     color: Color(0xff000000),
     fontSize: 13,
