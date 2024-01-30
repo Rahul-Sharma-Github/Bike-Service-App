@@ -16,6 +16,7 @@ import 'package:get/get.dart';
 import '../../features/authentication/data/repositories_implement/signin_repositories_impl/signin_repositories_impl.dart';
 import '../../features/authentication/domain/repositories/signin_repositories/signin_repositories.dart';
 import '../../features/authentication/presentation/controllers/signin_page/signin_controller.dart';
+import '../../features/schedule_summary/presentation/controllers/schedule_summary_controller/schedule_summary_controller.dart';
 
 class AppBindings extends Bindings {
   @override
@@ -48,5 +49,12 @@ class AppBindings extends Bindings {
     Get.lazyPut(() => ScheduleServicePageUseCase(Get.find()));
 
     Get.put(ScheduleServicePageController(Get.find()));
+
+    /// schedule_summary feature Bindings
+    // Get.lazyPut<ScheduleServiceRepositories>(() => ScheduleServiceRepoImpl());
+
+    // Get.lazyPut(() => ScheduleServicePageUseCase(Get.find()));
+
+    Get.put(ScheduleSummaryController());
   }
 }

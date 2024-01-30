@@ -453,8 +453,10 @@ class ScheduleServicePage extends StatelessWidget {
                         Get.snackbar('Alert',
                             'Atleast select 1 Service from Service List to continue !');
                       } else {
+                        // Navigating to ScheduleSummaryPage with valid Form field values
                         Get.to(
                           () => ScheduleSummaryPage(
+                            bookingId: bookingId,
                             bikeName: scheduleServicePageController
                                 .bikeNameController.value.text,
                             bikeNumber: scheduleServicePageController

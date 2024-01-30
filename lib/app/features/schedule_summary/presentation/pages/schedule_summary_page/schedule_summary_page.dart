@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../core/constants/theme/colors/colors.dart';
 import '../../../../../core/constants/theme/textstyles/textstyle.dart';
+import '../../controllers/schedule_summary_controller/schedule_summary_controller.dart';
 
 class ScheduleSummaryPage extends StatelessWidget {
+  final int? bookingId;
   final String? bikeName;
   final String? bikeNumber;
   final String? mobileNumber;
@@ -11,7 +14,7 @@ class ScheduleSummaryPage extends StatelessWidget {
   final List<dynamic>? selectedServiceList;
   final String? serviceDate;
   final String? serviceTime;
-  const ScheduleSummaryPage(
+  ScheduleSummaryPage(
       {super.key,
       this.bikeName,
       this.bikeNumber,
@@ -19,7 +22,10 @@ class ScheduleSummaryPage extends StatelessWidget {
       this.fullAddress,
       this.selectedServiceList,
       this.serviceDate,
-      this.serviceTime});
+      this.serviceTime,
+      this.bookingId});
+
+  final ScheduleSummaryController scheduleSummaryController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +65,10 @@ class ScheduleSummaryPage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                decoration: BoxDecoration(
-                  border: Border.all(),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                decoration: const BoxDecoration(
+                  // border: Border.all(),
                   color: AppColors.inputTextBoxInnerColor,
                 ),
                 child: Column(
@@ -68,10 +76,10 @@ class ScheduleSummaryPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     // Main Title
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
@@ -87,8 +95,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                       height: 20,
                     ),
                     // Bike Information
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    const Row(
                       children: [
                         Expanded(
                           child: Text(
@@ -105,9 +112,9 @@ class ScheduleSummaryPage extends StatelessWidget {
                     ),
                     // 1
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             'Booking ID',
                             textAlign: TextAlign.left,
@@ -116,7 +123,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            '10102',
+                            '$bookingId',
                             textAlign: TextAlign.left,
                             style: AppTextStyleTheme.scheduleSummaryValueText,
                           ),
@@ -125,9 +132,9 @@ class ScheduleSummaryPage extends StatelessWidget {
                     ),
                     // 2
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             'Bike Number',
                             textAlign: TextAlign.left,
@@ -136,7 +143,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            'RJ-36-4042',
+                            '$bikeNumber',
                             textAlign: TextAlign.left,
                             style: AppTextStyleTheme.scheduleSummaryValueText,
                           ),
@@ -145,9 +152,9 @@ class ScheduleSummaryPage extends StatelessWidget {
                     ),
                     // 3
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             'Bike Name',
                             textAlign: TextAlign.left,
@@ -156,7 +163,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            'Pulsar 150 cc',
+                            '$bikeName',
                             textAlign: TextAlign.left,
                             style: AppTextStyleTheme.scheduleSummaryValueText,
                           ),
@@ -167,8 +174,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                       height: 20,
                     ),
                     // Service Charges
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    const Row(
                       children: [
                         Expanded(
                           child: Text(
@@ -185,9 +191,9 @@ class ScheduleSummaryPage extends StatelessWidget {
                     ),
                     // Heading
                     Container(
-                      decoration:
-                          BoxDecoration(border: Border(bottom: BorderSide())),
-                      child: Row(
+                      decoration: const BoxDecoration(
+                          border: Border(bottom: BorderSide())),
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
@@ -208,33 +214,54 @@ class ScheduleSummaryPage extends StatelessWidget {
                       ),
                     ),
                     // 1 [ ListView.builder ]
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Regular Tune-up',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryKeyText,
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '350',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryValueText,
-                          ),
-                        ),
-                      ],
+                    SizedBox(
+                      child: ListView.separated(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        physics: const ClampingScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        itemCount: selectedServiceList!.length,
+                        shrinkWrap: true,
+                        primary: false,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 1.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    '${selectedServiceList![index]['name']}',
+                                    textAlign: TextAlign.left,
+                                    style: AppTextStyleTheme
+                                        .scheduleSummaryKeyText,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    '${selectedServiceList![index]['price']}',
+                                    textAlign: TextAlign.left,
+                                    style: AppTextStyleTheme
+                                        .scheduleSummaryValueText,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return const Divider();
+                        },
+                      ),
                     ),
+
                     // Footer
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           border: Border.symmetric(horizontal: BorderSide())),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(
+                          const Expanded(
                             child: Text(
                               'Total',
                               textAlign: TextAlign.left,
@@ -242,10 +269,15 @@ class ScheduleSummaryPage extends StatelessWidget {
                             ),
                           ),
                           Expanded(
-                            child: Text(
-                              '350',
-                              textAlign: TextAlign.left,
-                              style: AppTextStyleTheme.scheduleSummaryValueText,
+                            child: Obx(
+                              () => Text(
+                                scheduleSummaryController
+                                    .totalPriceResult(selectedServiceList)
+                                    .toString(),
+                                textAlign: TextAlign.left,
+                                style:
+                                    AppTextStyleTheme.scheduleSummaryValueText,
+                              ),
                             ),
                           ),
                         ],
@@ -255,7 +287,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                       height: 20,
                     ),
                     // Schedule Timing
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
@@ -273,9 +305,9 @@ class ScheduleSummaryPage extends StatelessWidget {
                     ),
                     // 1
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             'Service Starting Date',
                             textAlign: TextAlign.left,
@@ -284,7 +316,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            'Jan 22, 2024',
+                            '$serviceDate',
                             textAlign: TextAlign.left,
                             style: AppTextStyleTheme.scheduleSummaryValueText,
                           ),
@@ -293,9 +325,9 @@ class ScheduleSummaryPage extends StatelessWidget {
                     ),
                     // 2
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             'Service Starting Time',
                             textAlign: TextAlign.left,
@@ -304,7 +336,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            '9:30 AM',
+                            '$serviceTime',
                             textAlign: TextAlign.left,
                             style: AppTextStyleTheme.scheduleSummaryValueText,
                           ),
@@ -315,7 +347,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             'Service Ending Time',
                             textAlign: TextAlign.left,
@@ -324,7 +356,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            '[ After Service we will inform you, on your Registered Number = 2564879581 ]',
+                            '[ After Service we will inform you, on your Registered Number = $mobileNumber ]',
                             textAlign: TextAlign.left,
                             style: AppTextStyleTheme.scheduleSummaryValueText,
                           ),
@@ -335,7 +367,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                       height: 20,
                     ),
                     // Payment Option
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
@@ -352,8 +384,8 @@ class ScheduleSummaryPage extends StatelessWidget {
                       height: 10,
                     ),
                     // 1
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    const Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: Text(
@@ -364,7 +396,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            '568974589',
+                            '8005529994',
                             textAlign: TextAlign.left,
                             style: AppTextStyleTheme.scheduleSummaryValueText,
                           ),
@@ -373,7 +405,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                     ),
 
                     // 2
-                    Row(
+                    const Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
@@ -396,8 +428,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                       height: 20,
                     ),
                     // Payment Option
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    const Row(
                       children: [
                         Expanded(
                           child: Text(
@@ -413,7 +444,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                       height: 10,
                     ),
                     // 1
-                    Row(
+                    const Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
@@ -432,6 +463,9 @@ class ScheduleSummaryPage extends StatelessWidget {
                         ),
                       ],
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                   ],
                 ),
               ),
@@ -445,11 +479,16 @@ class ScheduleSummaryPage extends StatelessWidget {
                       MaterialStateProperty.all(AppColors.mainButtonColor),
                 ),
                 onPressed: () {
+                  // checking values
                   debugPrint('Bike Name = $bikeName');
                   debugPrint('Bike Number = $bikeNumber');
                   debugPrint('Mobile Number = $mobileNumber');
                   debugPrint('Full Address = $fullAddress');
                   debugPrint('Selected Service List = $selectedServiceList');
+                  debugPrint(
+                      'Total No. of Services = ${selectedServiceList!.length}');
+                  debugPrint(
+                      'Total Price of Service = ${scheduleSummaryController.totalPrice}');
                   debugPrint('Service Date = $serviceDate');
                   debugPrint('Service Time = $serviceTime');
                 },
