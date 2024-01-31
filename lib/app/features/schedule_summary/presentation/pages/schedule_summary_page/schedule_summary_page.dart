@@ -1,3 +1,4 @@
+import 'package:bike_service_app/app/features/schedule_summary/domain/entities/service_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +15,7 @@ class ScheduleSummaryPage extends StatelessWidget {
   final List<dynamic>? selectedServiceList;
   final String? serviceDate;
   final String? serviceTime;
+  final Map<String, Map<String, dynamic>>? serviceStatus;
   ScheduleSummaryPage(
       {super.key,
       this.bikeName,
@@ -23,8 +25,10 @@ class ScheduleSummaryPage extends StatelessWidget {
       this.selectedServiceList,
       this.serviceDate,
       this.serviceTime,
-      this.bookingId});
+      this.bookingId,
+      this.serviceStatus});
 
+  // Getting Instance of scheduleSummaryController each time we call the ScheduleSummaryPage Class
   final ScheduleSummaryController scheduleSummaryController = Get.find();
 
   @override
@@ -64,6 +68,7 @@ class ScheduleSummaryPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              // Main Container for Bill Summary
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -396,7 +401,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            '8005529994',
+                            'xxxxxxxxxx',
                             textAlign: TextAlign.left,
                             style: AppTextStyleTheme.scheduleSummaryValueText,
                           ),
@@ -478,7 +483,8 @@ class ScheduleSummaryPage extends StatelessWidget {
                   backgroundColor:
                       MaterialStateProperty.all(AppColors.mainButtonColor),
                 ),
-                onPressed: () {
+                onPressed: () async {
+                  //Debugging
                   // checking values
                   debugPrint('Bike Name = $bikeName');
                   debugPrint('Bike Number = $bikeNumber');
@@ -491,6 +497,40 @@ class ScheduleSummaryPage extends StatelessWidget {
                       'Total Price of Service = ${scheduleSummaryController.totalPrice}');
                   debugPrint('Service Date = $serviceDate');
                   debugPrint('Service Time = $serviceTime');
+                  debugPrint('Service Status = $serviceStatus');
+
+                  // Sending Values/Arguments to createService() Method of scheduleSummaryController to create a new Service
+                  try {
+                    await scheduleSummaryController.createService(
+                      bookingId.toString(),
+                      bikeName!,
+                      bikeNumber!,
+                      mobileNumber!,
+                      fullAddress!,
+                      serviceDate!,
+                      serviceTime!,
+                      '0000000000',
+                      // making List<classes> from List<Maps> & Passing it to createService Method of scheduleSummaryController
+                      List<SelectedServiceList>.from(
+                          selectedServiceList!
+                              .map(
+                                (x) => SelectedServiceList(
+                                  serviceName: x["name"],
+                                  servicePrice: x["price"],
+                                ),
+                              )
+                              .toList(),
+                          growable: true),
+                      // making single class object from Map<String,<String, dynamic>>
+                      ServiceStatus.fromMap(serviceStatus!["Service Status"]!),
+                    );
+
+                    // Showing Success Message
+                    Get.snackbar('Success', 'Service Created !');
+                  } catch (e) {
+                    debugPrint(
+                        'error while calling createService() Method of scheduleSummaryController through ScheduleSummaryPage =  $e');
+                  }
                 },
                 child: const Padding(
                   padding: EdgeInsets.symmetric(vertical: 16),

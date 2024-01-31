@@ -1,12 +1,21 @@
 // To parse this JSON data, do
-//
-//     final serviceEntity = serviceEntityFromMap(jsonString);
+
+// Example  = How to use
+
+// Json String to Dart Object/Instance conversion
+// final serviceEntity = serviceEntityFromMap(jsonString);
+
+// Dart Object to Json String and then to Dart Map conversion
+// final serviceEntity = serviceEntityToMap(jsonString);
+// after receiving Json String, we can convert it to Dart Map through below code
+// final data = json.decode(Json String);
 
 import 'dart:convert';
 
 ServiceEntity serviceEntityFromMap(String str) =>
     ServiceEntity.fromMap(json.decode(str));
 
+// Object to Json String
 String serviceEntityToMap(ServiceEntity data) => json.encode(data.toMap());
 
 class ServiceEntity {

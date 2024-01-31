@@ -6,6 +6,7 @@ class CreateServiceUseCase {
 
   CreateServiceUseCase(this.scheduleSummaryRepository);
 
+  // calling createService() method of ScheduleSummaryRepository abstract class while passing Instance/Object of ServiceEntity model class
   Future<void> call(ServiceEntity service) async {
     return await scheduleSummaryRepository.createService(service);
   }

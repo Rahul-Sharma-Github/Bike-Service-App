@@ -7,6 +7,9 @@ import 'package:bike_service_app/app/features/schedule_service/data/repositories
 import 'package:bike_service_app/app/features/schedule_service/domain/repositories/schedule_service_repositories.dart';
 import 'package:bike_service_app/app/features/schedule_service/domain/use_cases/schedule_service_usecase.dart';
 import 'package:bike_service_app/app/features/schedule_service/presentation/controllers/schedule_service_page_controller/schedule_service_page_controller.dart';
+import 'package:bike_service_app/app/features/schedule_summary/data/repositories_implement/schedule_summary_repo_impl.dart';
+import 'package:bike_service_app/app/features/schedule_summary/domain/repositories/schedule_summary_repositories.dart';
+import 'package:bike_service_app/app/features/schedule_summary/domain/use_cases/schedule_summary_use_case.dart';
 import 'package:bike_service_app/app/features/services/data/repositories_implement/service_page_repo_impl/service_page_repo_impl.dart';
 import 'package:bike_service_app/app/features/services/domain/repositories/service_page_repositories/service_page_repository.dart';
 import 'package:bike_service_app/app/features/services/domain/use_cases/service_page_usecase/service_page_usecase.dart';
@@ -51,10 +54,10 @@ class AppBindings extends Bindings {
     Get.put(ScheduleServicePageController(Get.find()));
 
     /// schedule_summary feature Bindings
-    // Get.lazyPut<ScheduleServiceRepositories>(() => ScheduleServiceRepoImpl());
+    Get.lazyPut<ScheduleSummaryRepository>(() => ScheduleSummaryRepoImpl());
 
-    // Get.lazyPut(() => ScheduleServicePageUseCase(Get.find()));
+    Get.lazyPut(() => CreateServiceUseCase(Get.find()));
 
-    Get.put(ScheduleSummaryController());
+    Get.put(ScheduleSummaryController(Get.find()));
   }
 }

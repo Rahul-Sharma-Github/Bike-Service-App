@@ -453,6 +453,16 @@ class ScheduleServicePage extends StatelessWidget {
                         Get.snackbar('Alert',
                             'Atleast select 1 Service from Service List to continue !');
                       } else {
+                        // creating new serviceStatus variable of type Map
+                        // to store Default Service Status values
+                        // we also pass this value to the ScheduleSummaryPage
+                        var serviceStatus = {
+                          "Service Status": {
+                            "service": "Not Started",
+                            "amount": "Pending"
+                          }
+                        };
+
                         // Navigating to ScheduleSummaryPage with valid Form field values
                         Get.to(
                           () => ScheduleSummaryPage(
@@ -472,6 +482,7 @@ class ScheduleServicePage extends StatelessWidget {
                                 .serviceDateController.value.text,
                             serviceTime: scheduleServicePageController
                                 .serviceTimeController.value.text,
+                            serviceStatus: serviceStatus,
                           ),
                         );
                       }
