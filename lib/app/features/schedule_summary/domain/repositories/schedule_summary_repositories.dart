@@ -1,0 +1,5 @@
+import 'package:bike_service_app/app/features/schedule_summary/domain/entities/service_entity.dart';
+
+abstract class ScheduleSummaryRepository {
+  Future<void> createService(ServiceEntity service);
+}
