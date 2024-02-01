@@ -47,7 +47,206 @@ class MyServicesPage extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           child: Column(
-            children: [],
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Heading
+              Row(
+                children: [
+                  Expanded(
+                    child: const Text(
+                      'Your Services',
+                      style: AppTextStyleTheme.scheduleSummaryTitleText,
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              // Service Card
+              Card(
+                margin: EdgeInsets.zero,
+                color: AppColors.serviceCardColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Left side
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(right: BorderSide()),
+                              ),
+                              child: Column(
+                                children: [
+                                  // title
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Ganpati Motors',
+                                          style: AppTextStyleTheme
+                                              .myServicesCardTitleText,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  // values
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Booking ID',
+                                          style: AppTextStyleTheme
+                                              .scheduleSummaryKeyText,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          '10103',
+                                          style: AppTextStyleTheme
+                                              .scheduleSummaryValueText,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Bike Number',
+                                          style: AppTextStyleTheme
+                                              .scheduleSummaryKeyText,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'RJ-36-4242',
+                                          style: AppTextStyleTheme
+                                              .scheduleSummaryValueText,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Feb 12, 2024',
+                                          style: AppTextStyleTheme
+                                              .myServicesCardDateText,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          // Right side
+                          Expanded(
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  // title
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Service Status',
+                                          style: AppTextStyleTheme
+                                              .myServicesCardTitleText,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  // values
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Service',
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Container(
+                                          padding: EdgeInsets.all(1),
+                                          color: AppColors.notStartedBoxColor,
+                                          child: Text(
+                                            'Not Started',
+                                            style: AppTextStyleTheme
+                                                .myServicesCardServiceStatusValueText,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Amount',
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Container(
+                                          padding: EdgeInsets.all(1),
+                                          color:
+                                              AppColors.pendingOrRuningBoxColor,
+                                          child: Text(
+                                            'Pending',
+                                            style: AppTextStyleTheme
+                                                .myServicesCardServiceStatusValueText,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

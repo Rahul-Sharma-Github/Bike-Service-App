@@ -105,6 +105,25 @@ class AppTextStyleTheme {
     fontWeight: FontWeight.w500,
   );
 
+  // TextStyles for MyServicesPage
+  static const TextStyle myServicesCardTitleText = TextStyle(
+    color: Color(0xff000000),
+    fontSize: 15,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle myServicesCardServiceStatusValueText = TextStyle(
+    color: Color(0xffFFFFFF),
+    fontSize: 13,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle myServicesCardDateText = TextStyle(
+    color: Color(0xff000000),
+    fontSize: 13,
+    fontWeight: FontWeight.w600,
+  );
+
   // Global usecase TextStyles
 
   // TextStyles for App Bar Text
