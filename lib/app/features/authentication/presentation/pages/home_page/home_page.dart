@@ -1,15 +1,19 @@
-// ignore_for_file: sized_box_for_whitespace, avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace
 
-import 'package:bike_service_app/app/core/constants/theme/textstyles/textstyle.dart';
-import 'package:bike_service_app/app/features/services/presentation/pages/service_page/service_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/constants/assets_path/asset_path.dart';
 import '../../../../../core/constants/theme/colors/colors.dart';
+import '../../../../../core/constants/theme/textstyles/textstyle.dart';
+import '../../../../services/presentation/pages/service_page/service_page.dart';
+import '../../controllers/bottom_navigation/bottom_navigation_controller.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final BottomNavigationController bottomNavigationController =
+      Get.put(BottomNavigationController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,7 @@ class HomePage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(
-              height: 26,
+              height: 16,
             ),
             Container(
               child: const Column(
@@ -48,7 +52,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(6.0),
                         child: Text(
                           '"Your Bike\'s Best Companion"',
                           style: AppTextStyleTheme
@@ -61,12 +65,12 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 24,
+              height: 14,
             ),
             Expanded(
               child: Container(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 24.0, vertical: 24.0),
+                    horizontal: 24.0, vertical: 14.0),
                 decoration: const BoxDecoration(
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(32.0)),
@@ -76,7 +80,7 @@ class HomePage extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        child: Image.asset(AssetPaths.bikeImage),
+                        child: Image.asset(AssetPaths.bikeImage, scale: 1.8),
                       ),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -89,7 +93,7 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 24,
+                        height: 22,
                       ),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -126,12 +130,39 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        height: 34,
+                        height: 24,
                       ),
                     ],
                   ),
                 ),
               ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Obx(
+        () => BottomNavigationBar(
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          backgroundColor: AppColors.backSheetColor,
+          currentIndex: bottomNavigationController.tabIndex.value,
+          selectedItemColor: AppColors.frontSheetColor,
+          unselectedItemColor: AppColors.frontSheetColor.withOpacity(0.5),
+          onTap: (value) {
+            bottomNavigationController.changeTabIndex(value);
+          },
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.auto_awesome_motion_rounded,
+              ),
+              label: 'Services',
             ),
           ],
         ),

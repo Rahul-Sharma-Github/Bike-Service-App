@@ -23,7 +23,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 // Firebase Firestore Package
 // import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'app/features/authentication/presentation/pages/home_page/home_page.dart';
+import 'app/features/authentication/presentation/pages/landing_page/landing_page.dart';
 
 //// Page Imports
 
@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             // if Signed In then show Home Page
-            return const HomePage();
+            return LandingPage();
           } else {
             // if not Signed In then show SignUp Page
             return SignUpPage();

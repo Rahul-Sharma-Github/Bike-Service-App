@@ -1,3 +1,4 @@
+import 'package:bike_service_app/app/features/authentication/presentation/pages/landing_page/landing_page.dart';
 import 'package:bike_service_app/app/features/schedule_summary/domain/entities/service_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -527,6 +528,8 @@ class ScheduleSummaryPage extends StatelessWidget {
 
                     // Showing Success Message
                     Get.snackbar('Success', 'Service Created !');
+                    // Go to landingPage -> HomePage and clear all route from Route Stack
+                    Get.offAll(() => LandingPage());
                   } catch (e) {
                     debugPrint(
                         'error while calling createService() Method of scheduleSummaryController through ScheduleSummaryPage =  $e');
