@@ -522,6 +522,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                               )
                               .toList(),
                           growable: true),
+                      scheduleSummaryController.totalPrice.value.toString(),
                       // making single class object from Map<String,<String, dynamic>>
                       ServiceStatus.fromMap(serviceStatus!["Service Status"]!),
                     );

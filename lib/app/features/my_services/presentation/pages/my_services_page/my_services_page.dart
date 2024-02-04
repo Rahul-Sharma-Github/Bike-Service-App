@@ -78,8 +78,7 @@ class MyServicesPage extends StatelessWidget {
                 child: StreamBuilder(
                   stream: myServicesController.fetchStreamData(),
                   builder: (context, snapshot) {
-                    if (snapshot.hasData &&
-                        snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasData) {
                       return ListView.builder(
                         reverse: true,
                         physics: const ClampingScrollPhysics(),
@@ -327,14 +326,9 @@ class MyServicesPage extends StatelessWidget {
                           );
                         },
                       );
-                    } else if (snapshot.connectionState ==
-                        ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
                     } else {
                       return const Center(
-                        child: EmptyWidget(),
+                        child: CircularProgressIndicator(),
                       );
                     }
                   },

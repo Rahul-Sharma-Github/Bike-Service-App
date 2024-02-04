@@ -21,6 +21,7 @@ class ScheduleSummaryController extends GetxController {
       String serviceTime,
       String onlinePaymentUpiNumber,
       List<SelectedServiceList> selectedServiceList,
+      String totalPrice,
       ServiceStatus serviceStatus) async {
     try {
       await createServiceUseCase(
@@ -35,7 +36,8 @@ class ScheduleSummaryController extends GetxController {
             serviceTime: serviceTime,
             onlinePaymentUpiNumber: onlinePaymentUpiNumber,
             selectedServiceList: selectedServiceList,
-            serviceStatus: serviceStatus),
+            serviceStatus: serviceStatus,
+            totalPrice: totalPrice),
       );
     } catch (e) {
       debugPrint(

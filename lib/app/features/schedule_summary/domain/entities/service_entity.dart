@@ -28,6 +28,7 @@ class ServiceEntity {
   final String serviceTime;
   final String onlinePaymentUpiNumber;
   final List<SelectedServiceList> selectedServiceList;
+  final String totalPrice;
   final ServiceStatus serviceStatus;
 
   ServiceEntity({
@@ -40,6 +41,7 @@ class ServiceEntity {
     required this.serviceTime,
     required this.onlinePaymentUpiNumber,
     required this.selectedServiceList,
+    required this.totalPrice,
     required this.serviceStatus,
   });
 
@@ -55,6 +57,7 @@ class ServiceEntity {
         selectedServiceList: List<SelectedServiceList>.from(
             json["Selected Service List"]
                 .map((x) => SelectedServiceList.fromMap(x))),
+        totalPrice: json["Total Price"],
         serviceStatus: ServiceStatus.fromMap(json["Service Status"]),
       );
 
@@ -69,6 +72,7 @@ class ServiceEntity {
         "Online Payment UPI Number": onlinePaymentUpiNumber,
         "Selected Service List":
             List<dynamic>.from(selectedServiceList.map((x) => x.toMap())),
+        "Total Price": totalPrice,
         "Service Status": serviceStatus.toMap(),
       };
 }
