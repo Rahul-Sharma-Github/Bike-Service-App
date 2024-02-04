@@ -78,7 +78,8 @@ class MyServicesPage extends StatelessWidget {
                 child: StreamBuilder(
                   stream: myServicesController.fetchStreamData(),
                   builder: (context, snapshot) {
-                    if (snapshot.hasData) {
+                    if (snapshot.hasData &&
+                        snapshot.connectionState == ConnectionState.done) {
                       return ListView.builder(
                         reverse: true,
                         physics: const ClampingScrollPhysics(),
