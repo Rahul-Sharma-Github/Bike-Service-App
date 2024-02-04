@@ -180,15 +180,28 @@ class MyServicesPage extends StatelessWidget {
                                                     ),
                                                   ],
                                                 ),
-                                                const SizedBox(
-                                                  height: 10,
-                                                ),
+                                                const Divider(endIndent: 10),
                                                 Row(
                                                   children: [
                                                     Expanded(
                                                       child: Text(
                                                         docSnapshot?[
                                                             'Service Date'],
+                                                        style: AppTextStyleTheme
+                                                            .myServicesCardDateText,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        docSnapshot?[
+                                                            'Service Time'],
                                                         style: AppTextStyleTheme
                                                             .myServicesCardDateText,
                                                       ),
@@ -315,6 +328,38 @@ class MyServicesPage extends StatelessWidget {
                                                         ),
                                                       ),
                                                     ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                                const Divider(indent: 10),
+                                                Row(
+                                                  children: [
+                                                    const Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                left: 5),
+                                                        child: Text(
+                                                          'Total Amount',
+                                                          style: AppTextStyleTheme
+                                                              .scheduleSummaryKeyText,
+                                                          textAlign:
+                                                              TextAlign.right,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Text(
+                                                        docSnapshot?[
+                                                            'Total Price'],
+                                                        style: AppTextStyleTheme
+                                                            .scheduleSummaryValueText,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                    )
                                                   ],
                                                 ),
                                               ],
