@@ -334,9 +334,6 @@ class MyServicesPage extends StatelessWidget {
                   },
                 ),
               ),
-              //
-
-              //
             ],
           ),
         ),
