@@ -8,6 +8,7 @@ import '../../../../../core/constants/theme/colors/colors.dart';
 import '../../../../../core/constants/theme/textstyles/textstyle.dart';
 import '../../../../authentication/presentation/controllers/bottom_navigation/bottom_navigation_controller.dart';
 import '../../controllers/my_services_controller.dart';
+import '../../widgets/empty_widget.dart';
 
 class MyServicesPage extends StatelessWidget {
   MyServicesPage({super.key});
@@ -235,8 +236,21 @@ class MyServicesPage extends StatelessWidget {
                                                         padding:
                                                             const EdgeInsets
                                                                 .all(1),
-                                                        color: AppColors
-                                                            .notStartedBoxColor,
+                                                        color: (docSnapshot?[
+                                                                        'Service Status']
+                                                                    [
+                                                                    'service'] ==
+                                                                'Not Started')
+                                                            ? AppColors
+                                                                .notStartedBoxColor
+                                                            : (docSnapshot?['Service Status']
+                                                                        [
+                                                                        'service'] ==
+                                                                    'Running')
+                                                                ? AppColors
+                                                                    .pendingOrRuningBoxColor
+                                                                : AppColors
+                                                                    .doneOrPaidBoxColor,
                                                         child: Text(
                                                           docSnapshot?[
                                                                   'Service Status']
@@ -271,8 +285,21 @@ class MyServicesPage extends StatelessWidget {
                                                         padding:
                                                             const EdgeInsets
                                                                 .all(1),
-                                                        color: AppColors
-                                                            .pendingOrRuningBoxColor,
+                                                        color: (docSnapshot?[
+                                                                        'Service Status']
+                                                                    [
+                                                                    'amount'] ==
+                                                                'Pending')
+                                                            ? AppColors
+                                                                .pendingOrRuningBoxColor
+                                                            : (docSnapshot?['Service Status']
+                                                                        [
+                                                                        'amount'] ==
+                                                                    'Paid')
+                                                                ? AppColors
+                                                                    .doneOrPaidBoxColor
+                                                                : AppColors
+                                                                    .notStartedBoxColor,
                                                         child: Text(
                                                           docSnapshot?[
                                                                   'Service Status']
@@ -299,9 +326,14 @@ class MyServicesPage extends StatelessWidget {
                           );
                         },
                       );
-                    } else {
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.waiting) {
                       return const Center(
                         child: CircularProgressIndicator(),
+                      );
+                    } else {
+                      return const Center(
+                        child: EmptyWidget(),
                       );
                     }
                   },
