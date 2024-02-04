@@ -118,7 +118,7 @@ class ScheduleServicePage extends StatelessWidget {
                   },
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
                 // Heading [2]
                 const Row(
@@ -176,7 +176,7 @@ class ScheduleServicePage extends StatelessWidget {
                   },
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
                 // Heading [3]
                 const Row(
@@ -301,7 +301,7 @@ class ScheduleServicePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 50,
                 ),
                 //
                 const Row(
@@ -341,7 +341,7 @@ class ScheduleServicePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
                 // Heading [4]
                 const Row(
@@ -354,12 +354,24 @@ class ScheduleServicePage extends StatelessWidget {
                     ),
                   ],
                 ),
+                const Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        '[ Between 9:00 AM  -  4:00 PM ]',
+                        style: AppTextStyleTheme.descriptionText,
+                      ),
+                    ),
+                  ],
+                ),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 // service date
                 Obx(
                   () => TextFormField(
+                    showCursor: false,
+                    enableInteractiveSelection: false,
                     controller: scheduleServicePageController
                         .serviceDateController.value,
                     keyboardType: TextInputType.none,
@@ -396,6 +408,8 @@ class ScheduleServicePage extends StatelessWidget {
                 // service Time
                 Obx(
                   () => TextFormField(
+                    showCursor: false,
+                    enableInteractiveSelection: false,
                     controller: scheduleServicePageController
                         .serviceTimeController.value,
                     keyboardType: TextInputType.none,
@@ -506,6 +520,9 @@ class ScheduleServicePage extends StatelessWidget {
                       debugPrint(
                           'serviceTime = ${scheduleServicePageController.serviceTimeController.value.text}');
                     } else {
+                      // Showing Snackbar for user, so that they know that fields are Empty
+                      Get.snackbar('Alert', 'Fill the Information !');
+
                       // Debuging
                       // Checking saved invalid Values
                       debugPrint('Current Form State is not valid');
