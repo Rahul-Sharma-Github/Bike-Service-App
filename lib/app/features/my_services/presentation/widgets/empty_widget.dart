@@ -5,10 +5,9 @@ class EmptyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return const Column(
       children: [
-        Text('0 Scheduled Service ! Schedule Now '),
-        Icon(Icons.create_new_folder_outlined),
+        Text('0 Scheduled Service !'),
       ],
     );
   }
