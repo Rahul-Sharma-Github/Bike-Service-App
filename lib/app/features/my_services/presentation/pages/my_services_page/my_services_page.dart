@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers
 
+import 'package:bike_service_app/app/features/my_services/presentation/widgets/empty_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -77,7 +78,11 @@ class MyServicesPage extends StatelessWidget {
                 child: StreamBuilder(
                   stream: myServicesController.fetchStreamData(),
                   builder: (context, snapshot) {
-                    if (snapshot.hasData) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: EmptyWidget(),
+                      );
+                    } else {
                       return ListView.builder(
                         reverse: true,
                         physics: const ClampingScrollPhysics(),
@@ -324,10 +329,6 @@ class MyServicesPage extends StatelessWidget {
                             ),
                           );
                         },
-                      );
-                    } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
                       );
                     }
                   },
