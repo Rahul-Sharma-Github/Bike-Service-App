@@ -84,7 +84,6 @@ class MyServicesPage extends StatelessWidget {
                       );
                     } else {
                       return ListView.builder(
-                        reverse: false,
                         physics: const ClampingScrollPhysics(),
                         shrinkWrap: true,
                         primary: false,

@@ -529,7 +529,8 @@ class ScheduleSummaryPage extends StatelessWidget {
                     );
 
                     // Showing Success Message
-                    snackbarWidget('Success', 'Service Created !');
+                    snackbarWidget('Success', 'Service Scheduled !',
+                        AppColors.snackBarColorSuccess);
 
                     // Go to landingPage -> HomePage and clear all route from Route Stack
                     Get.offAll(() => LandingPage());

@@ -279,8 +279,10 @@ class ServicePage extends StatelessWidget {
                   // fetching and storing nextBookingId number | and then passing it to next page ( ScheduleServicePage )
                   try {
                     await servicePageController.fetchNextBookingId();
-                    snackbarWidget('New Booking ID Generated !',
-                        '[ Booking ID = ${servicePageController.nextBookingId.value} ]');
+                    snackbarWidget(
+                        'New Booking ID Generated !',
+                        '[ Booking ID = ${servicePageController.nextBookingId.value} ]',
+                        AppColors.snackBarColorSuccess);
 
                     await Get.to(() => ScheduleServicePage(
                           bookingId: servicePageController.nextBookingId.value,

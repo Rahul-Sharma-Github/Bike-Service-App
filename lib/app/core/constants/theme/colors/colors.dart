@@ -21,4 +21,9 @@ class AppColors {
   static const Color notStartedBoxColor = Color(0xff737475);
   static const Color pendingOrRuningBoxColor = Color(0xffF4A227);
   static const Color doneOrPaidBoxColor = Color(0xff3EBF01);
+
+  // Snackbar Color
+  static const Color snackBarColorSuccess = Color(0xff3EBF01);
+  static const Color snackBarColorWarning = Color(0xffF0952B);
+  static const Color snackBarColorNormal = Color(0xff3C3B3B);
 }

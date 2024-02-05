@@ -466,8 +466,8 @@ class ScheduleServicePage extends StatelessWidget {
                       // Passing field values to next ScheduleSummaryPage
                       if (scheduleServicePageController
                           .selectedServicesListData.isEmpty) {
-                        snackbarWidget('Alert',
-                            'Atleast select 1 Service from Service List to continue !');
+                        snackbarWidget('Alert', 'Select Desired Service !',
+                            AppColors.snackBarColorWarning);
                       } else {
                         // creating new serviceStatus variable of type Map
                         // to store Default Service Status values
@@ -523,7 +523,8 @@ class ScheduleServicePage extends StatelessWidget {
                           'serviceTime = ${scheduleServicePageController.serviceTimeController.value.text}');
                     } else {
                       // Showing Snackbar for user, so that they know that fields are Empty
-                      snackbarWidget('Alert', 'Fill the Information !');
+                      snackbarWidget('Alert', 'Fill the Information !',
+                          AppColors.snackBarColorWarning);
 
                       // Debuging
                       // Checking saved invalid Values
