@@ -10,6 +10,7 @@ import '../home_page/home_page.dart';
 class LandingPage extends StatelessWidget {
   LandingPage({super.key});
 
+  // controller
   final BottomNavigationController bottomNavigationController =
       Get.put(BottomNavigationController());
 

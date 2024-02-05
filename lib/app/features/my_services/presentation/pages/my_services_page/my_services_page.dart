@@ -84,13 +84,14 @@ class MyServicesPage extends StatelessWidget {
                       );
                     } else {
                       return ListView.builder(
-                        reverse: true,
+                        reverse: false,
                         physics: const ClampingScrollPhysics(),
                         shrinkWrap: true,
                         primary: false,
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         itemCount: snapshot.data?.docs.length,
                         itemBuilder: (context, index) {
+                          // Getting each Document by index
                           QueryDocumentSnapshot<Map<String, dynamic>>?
                               docSnapshot = snapshot.data?.docs[index];
                           return Padding(

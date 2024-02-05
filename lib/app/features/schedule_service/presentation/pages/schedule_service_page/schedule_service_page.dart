@@ -2,6 +2,7 @@
 
 import 'package:bike_service_app/app/core/constants/theme/colors/colors.dart';
 import 'package:bike_service_app/app/core/constants/theme/textstyles/textstyle.dart';
+import 'package:bike_service_app/app/global/widget_components/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -14,6 +15,7 @@ class ScheduleServicePage extends StatelessWidget {
   final int? bookingId;
   ScheduleServicePage({super.key, this.bookingId});
 
+  // controller
   final ScheduleServicePageController scheduleServicePageController =
       Get.find();
 
@@ -464,7 +466,7 @@ class ScheduleServicePage extends StatelessWidget {
                       // Passing field values to next ScheduleSummaryPage
                       if (scheduleServicePageController
                           .selectedServicesListData.isEmpty) {
-                        Get.snackbar('Alert',
+                        snackbarWidget('Alert',
                             'Atleast select 1 Service from Service List to continue !');
                       } else {
                         // creating new serviceStatus variable of type Map
@@ -521,7 +523,7 @@ class ScheduleServicePage extends StatelessWidget {
                           'serviceTime = ${scheduleServicePageController.serviceTimeController.value.text}');
                     } else {
                       // Showing Snackbar for user, so that they know that fields are Empty
-                      Get.snackbar('Alert', 'Fill the Information !');
+                      snackbarWidget('Alert', 'Fill the Information !');
 
                       // Debuging
                       // Checking saved invalid Values

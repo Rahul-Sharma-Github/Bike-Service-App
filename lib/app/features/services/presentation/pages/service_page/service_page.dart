@@ -3,6 +3,7 @@
 import 'package:bike_service_app/app/core/constants/theme/colors/colors.dart';
 import 'package:bike_service_app/app/core/constants/theme/textstyles/textstyle.dart';
 import 'package:bike_service_app/app/features/services/presentation/controllers/service_page_controller/service_page_controller.dart';
+import 'package:bike_service_app/app/global/widget_components/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,7 @@ import '../../../../schedule_service/presentation/pages/schedule_service_page/sc
 class ServicePage extends StatelessWidget {
   ServicePage({super.key});
 
+  // controller
   final ServicePageController servicePageController = Get.find();
 
   @override
@@ -277,13 +279,15 @@ class ServicePage extends StatelessWidget {
                   // fetching and storing nextBookingId number | and then passing it to next page ( ScheduleServicePage )
                   try {
                     await servicePageController.fetchNextBookingId();
-                    Get.snackbar('Next Booking ID Generated !',
-                        '${servicePageController.nextBookingId.value}');
+                    snackbarWidget('New Booking ID Generated !',
+                        '[ Booking ID = ${servicePageController.nextBookingId.value} ]');
+
                     await Get.to(() => ScheduleServicePage(
                           bookingId: servicePageController.nextBookingId.value,
                         ));
                   } catch (e) {
-                    debugPrint('error in ServicePage while Navigating = $e');
+                    debugPrint(
+                        'error in ServicePage while Fetching Next BookingID & Navigating to ScheduleServicePage = $e');
                   }
                 },
                 child: const Padding(
