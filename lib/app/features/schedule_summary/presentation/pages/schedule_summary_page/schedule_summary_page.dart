@@ -35,523 +35,568 @@ class ScheduleSummaryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      backgroundColor: AppColors.backSheetColor,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.white,
-        title: const Text(
-          'Schedule Summary',
-          style: AppTextStyleTheme.appBarText,
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 18.0),
-            child: CircleAvatar(
-              radius: 18,
-              child: Icon(
-                Icons.person_sharp,
-                size: 28,
+    // Back Navigation Logic while using AlertDialog
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) async {
+        // if true then return nothing
+        if (didPop) {
+          return;
+        }
+        // if false then return AlertDialog Widget
+        await showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => AlertDialog(
+            title: const Text('Do you want to Edit this ?'),
+            actions: [
+              OutlinedButton(
+                onPressed: () {
+                  // if user click on Yes then,
+
+                  // First close the Dialog
+                  Get.back();
+                  // Then close the current page and go back
+                  Get.back();
+                },
+                child: const Text('Yes'),
               ),
-            ),
-          )
-        ],
-      ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(32.0)),
-          color: AppColors.frontSheetColor,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // Main Container for Bill Summary
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                decoration: const BoxDecoration(
-                  // border: Border.all(),
-                  color: AppColors.inputTextBoxInnerColor,
+              OutlinedButton(
+                onPressed: () {
+                  // if user click on No then,
+
+                  // Just close the dialog
+                  Get.back();
+                },
+                child: const Text('No'),
+              ),
+            ],
+          ),
+        );
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        backgroundColor: AppColors.backSheetColor,
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.white,
+          title: const Text(
+            'Schedule Summary',
+            style: AppTextStyleTheme.appBarText,
+          ),
+          actions: const [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 18.0),
+              child: CircleAvatar(
+                radius: 18,
+                child: Icon(
+                  Icons.person_sharp,
+                  size: 28,
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    // Main Title
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Ganpati Motors',
-                            textAlign: TextAlign.center,
-                            style: AppTextStyleTheme.scheduleSummaryTitleText,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    // Bike Information
-                    const Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Bike Information',
-                            textAlign: TextAlign.left,
-                            style:
-                                AppTextStyleTheme.scheduleSummarySubTitleText,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    // 1
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Expanded(
-                          child: Text(
-                            'Booking ID',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryKeyText,
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '$bookingId',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryValueText,
-                          ),
-                        ),
-                      ],
-                    ),
-                    // 2
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Expanded(
-                          child: Text(
-                            'Bike Number',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryKeyText,
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '$bikeNumber',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryValueText,
-                          ),
-                        ),
-                      ],
-                    ),
-                    // 3
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Expanded(
-                          child: Text(
-                            'Bike Name',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryKeyText,
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '$bikeName',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryValueText,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    // Service Charges
-                    const Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Service Charges',
-                            textAlign: TextAlign.left,
-                            style:
-                                AppTextStyleTheme.scheduleSummarySubTitleText,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    // Heading
-                    Container(
-                      decoration: const BoxDecoration(
-                          border: Border(bottom: BorderSide())),
-                      child: const Row(
+              ),
+            )
+          ],
+        ),
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(32.0)),
+            color: AppColors.frontSheetColor,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                // Main Container for Bill Summary
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  decoration: const BoxDecoration(
+                    // border: Border.all(),
+                    color: AppColors.inputTextBoxInnerColor,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      // Main Title
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
                             child: Text(
-                              'Service Name',
+                              'Ganpati Motors',
+                              textAlign: TextAlign.center,
+                              style: AppTextStyleTheme.scheduleSummaryTitleText,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      // Bike Information
+                      const Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Bike Information',
                               textAlign: TextAlign.left,
-                              style: AppTextStyleTheme.scheduleSummaryValueText,
+                              style:
+                                  AppTextStyleTheme.scheduleSummarySubTitleText,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      // 1
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Expanded(
+                            child: Text(
+                              'Booking ID',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryKeyText,
                             ),
                           ),
                           Expanded(
                             child: Text(
-                              'Service Price',
+                              '$bookingId',
                               textAlign: TextAlign.left,
                               style: AppTextStyleTheme.scheduleSummaryValueText,
                             ),
                           ),
                         ],
                       ),
-                    ),
-                    // 1 [ ListView.builder ]
-                    SizedBox(
-                      child: ListView.separated(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        physics: const ClampingScrollPhysics(),
-                        scrollDirection: Axis.vertical,
-                        itemCount: selectedServiceList!.length,
-                        shrinkWrap: true,
-                        primary: false,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 1.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    '${selectedServiceList![index]['name']}',
-                                    textAlign: TextAlign.left,
-                                    style: AppTextStyleTheme
-                                        .scheduleSummaryKeyText,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    '${selectedServiceList![index]['price']}',
-                                    textAlign: TextAlign.left,
-                                    style: AppTextStyleTheme
-                                        .scheduleSummaryValueText,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                        separatorBuilder: (BuildContext context, int index) {
-                          return const Divider();
-                        },
-                      ),
-                    ),
-
-                    // Footer
-                    Container(
-                      decoration: const BoxDecoration(
-                          border: Border.symmetric(horizontal: BorderSide())),
-                      child: Row(
+                      // 2
+                      Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Expanded(
                             child: Text(
-                              'Total',
+                              'Bike Number',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryKeyText,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              '$bikeNumber',
                               textAlign: TextAlign.left,
                               style: AppTextStyleTheme.scheduleSummaryValueText,
                             ),
                           ),
+                        ],
+                      ),
+                      // 3
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Expanded(
+                            child: Text(
+                              'Bike Name',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryKeyText,
+                            ),
+                          ),
                           Expanded(
-                            child: Obx(
-                              () => Text(
-                                scheduleSummaryController
-                                    .totalPriceResult(selectedServiceList)
-                                    .toString(),
+                            child: Text(
+                              '$bikeName',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryValueText,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      // Service Charges
+                      const Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Service Charges',
+                              textAlign: TextAlign.left,
+                              style:
+                                  AppTextStyleTheme.scheduleSummarySubTitleText,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      // Heading
+                      Container(
+                        decoration: const BoxDecoration(
+                            border: Border(bottom: BorderSide())),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Service Name',
                                 textAlign: TextAlign.left,
                                 style:
                                     AppTextStyleTheme.scheduleSummaryValueText,
                               ),
                             ),
+                            Expanded(
+                              child: Text(
+                                'Service Price',
+                                textAlign: TextAlign.left,
+                                style:
+                                    AppTextStyleTheme.scheduleSummaryValueText,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // 1 [ ListView.builder ]
+                      SizedBox(
+                        child: ListView.separated(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          physics: const ClampingScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          itemCount: selectedServiceList!.length,
+                          shrinkWrap: true,
+                          primary: false,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 1.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      '${selectedServiceList![index]['name']}',
+                                      textAlign: TextAlign.left,
+                                      style: AppTextStyleTheme
+                                          .scheduleSummaryKeyText,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      '${selectedServiceList![index]['price']}',
+                                      textAlign: TextAlign.left,
+                                      style: AppTextStyleTheme
+                                          .scheduleSummaryValueText,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                          separatorBuilder: (BuildContext context, int index) {
+                            return const Divider();
+                          },
+                        ),
+                      ),
+
+                      // Footer
+                      Container(
+                        decoration: const BoxDecoration(
+                            border: Border.symmetric(horizontal: BorderSide())),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Expanded(
+                              child: Text(
+                                'Total',
+                                textAlign: TextAlign.left,
+                                style:
+                                    AppTextStyleTheme.scheduleSummaryValueText,
+                              ),
+                            ),
+                            Expanded(
+                              child: Obx(
+                                () => Text(
+                                  scheduleSummaryController
+                                      .totalPriceResult(selectedServiceList)
+                                      .toString(),
+                                  textAlign: TextAlign.left,
+                                  style: AppTextStyleTheme
+                                      .scheduleSummaryValueText,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      // Schedule Timing
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Schedule Timing',
+                              textAlign: TextAlign.left,
+                              style:
+                                  AppTextStyleTheme.scheduleSummarySubTitleText,
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    // Schedule Timing
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Schedule Timing',
-                            textAlign: TextAlign.left,
-                            style:
-                                AppTextStyleTheme.scheduleSummarySubTitleText,
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      // 1
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Expanded(
+                            child: Text(
+                              'Service Starting Date',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryKeyText,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    // 1
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Expanded(
-                          child: Text(
-                            'Service Starting Date',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryKeyText,
+                          Expanded(
+                            child: Text(
+                              '$serviceDate',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryValueText,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '$serviceDate',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryValueText,
+                        ],
+                      ),
+                      // 2
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Expanded(
+                            child: Text(
+                              'Service Starting Time',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryKeyText,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    // 2
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Expanded(
-                          child: Text(
-                            'Service Starting Time',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryKeyText,
+                          Expanded(
+                            child: Text(
+                              '$serviceTime',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryValueText,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '$serviceTime',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryValueText,
+                        ],
+                      ),
+                      // 3
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Expanded(
+                            child: Text(
+                              'Service Ending Time',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryKeyText,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    // 3
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Expanded(
-                          child: Text(
-                            'Service Ending Time',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryKeyText,
+                          Expanded(
+                            child: Text(
+                              '[ After Service we will inform you, on your Registered Number = $mobileNumber ]',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryValueText,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '[ After Service we will inform you, on your Registered Number = $mobileNumber ]',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryValueText,
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      // Payment Option
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Payment Option',
+                              textAlign: TextAlign.left,
+                              style:
+                                  AppTextStyleTheme.scheduleSummarySubTitleText,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    // Payment Option
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Payment Option',
-                            textAlign: TextAlign.left,
-                            style:
-                                AppTextStyleTheme.scheduleSummarySubTitleText,
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      // 1
+                      const Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Online Payment UPI No.',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryKeyText,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    // 1
-                    const Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Online Payment UPI No.',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryKeyText,
+                          Expanded(
+                            child: Text(
+                              'xxxxxxxxxx',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryValueText,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            'xxxxxxxxxx',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryValueText,
-                          ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
 
-                    // 2
-                    const Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Offline Option',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryKeyText,
+                      // 2
+                      const Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Offline Option',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryKeyText,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '[ You can pay on the service center ]',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryValueText,
+                          Expanded(
+                            child: Text(
+                              '[ You can pay on the service center ]',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryValueText,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    // Payment Option
-                    const Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Service Center Address',
-                            textAlign: TextAlign.left,
-                            style:
-                                AppTextStyleTheme.scheduleSummarySubTitleText,
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      // Payment Option
+                      const Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Service Center Address',
+                              textAlign: TextAlign.left,
+                              style:
+                                  AppTextStyleTheme.scheduleSummarySubTitleText,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    // 1
-                    const Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Address',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryKeyText,
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      // 1
+                      const Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Address',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryKeyText,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '[ Ganpati Motor Services, Krishna Nagar Sendra Road, Beawar, Rajasthan 305901 ]',
-                            textAlign: TextAlign.left,
-                            style: AppTextStyleTheme.scheduleSummaryValueText,
+                          Expanded(
+                            child: Text(
+                              '[ Ganpati Motor Services, Krishna Nagar Sendra Road, Beawar, Rajasthan 305901 ]',
+                              textAlign: TextAlign.left,
+                              style: AppTextStyleTheme.scheduleSummaryValueText,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              // Button
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(AppColors.mainButtonColor),
-                ),
-                onPressed: () async {
-                  //Debugging
-                  // checking values
-                  debugPrint('Bike Name = $bikeName');
-                  debugPrint('Bike Number = $bikeNumber');
-                  debugPrint('Mobile Number = $mobileNumber');
-                  debugPrint('Full Address = $fullAddress');
-                  debugPrint('Selected Service List = $selectedServiceList');
-                  debugPrint(
-                      'Total No. of Services = ${selectedServiceList!.length}');
-                  debugPrint(
-                      'Total Price of Service = ${scheduleSummaryController.totalPrice}');
-                  debugPrint('Service Date = $serviceDate');
-                  debugPrint('Service Time = $serviceTime');
-                  debugPrint('Service Status = $serviceStatus');
-
-                  // Sending Values/Arguments to createService() Method of scheduleSummaryController to create a new Service
-                  try {
-                    await scheduleSummaryController.createService(
-                      bookingId.toString(),
-                      bikeName!,
-                      bikeNumber!,
-                      mobileNumber!,
-                      fullAddress!,
-                      serviceDate!,
-                      serviceTime!,
-                      '0000000000',
-                      // making List<classes> from List<Maps> & Passing it to createService Method of scheduleSummaryController
-                      List<SelectedServiceList>.from(
-                          selectedServiceList!
-                              .map(
-                                (x) => SelectedServiceList(
-                                  serviceName: x["name"],
-                                  servicePrice: x["price"],
-                                ),
-                              )
-                              .toList(),
-                          growable: true),
-                      scheduleSummaryController.totalPrice.value.toString(),
-                      // making single class object from Map<String,<String, dynamic>>
-                      ServiceStatus.fromMap(serviceStatus!["Service Status"]!),
-                    );
-
-                    // Showing Success Message
-                    snackbarWidget('Success', 'Service Scheduled !',
-                        AppColors.snackBarColorSuccess);
-
-                    // Go to landingPage -> HomePage and clear all route from Route Stack
-                    Get.offAll(() => LandingPage());
-                  } catch (e) {
-                    debugPrint(
-                        'error while calling createService() Method of scheduleSummaryController through ScheduleSummaryPage =  $e');
-                  }
-                },
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  child: Text(
-                    'Confirm This Service',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyleTheme.buttonMainText,
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-            ],
+                const SizedBox(
+                  height: 40,
+                ),
+                // Button
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(AppColors.mainButtonColor),
+                  ),
+                  onPressed: () async {
+                    //Debugging
+                    // checking values
+                    debugPrint('Bike Name = $bikeName');
+                    debugPrint('Bike Number = $bikeNumber');
+                    debugPrint('Mobile Number = $mobileNumber');
+                    debugPrint('Full Address = $fullAddress');
+                    debugPrint('Selected Service List = $selectedServiceList');
+                    debugPrint(
+                        'Total No. of Services = ${selectedServiceList!.length}');
+                    debugPrint(
+                        'Total Price of Service = ${scheduleSummaryController.totalPrice}');
+                    debugPrint('Service Date = $serviceDate');
+                    debugPrint('Service Time = $serviceTime');
+                    debugPrint('Service Status = $serviceStatus');
+
+                    // Sending Values/Arguments to createService() Method of scheduleSummaryController to create a new Service
+                    try {
+                      await scheduleSummaryController.createService(
+                        bookingId.toString(),
+                        bikeName!,
+                        bikeNumber!,
+                        mobileNumber!,
+                        fullAddress!,
+                        serviceDate!,
+                        serviceTime!,
+                        '0000000000',
+                        // making List<classes> from List<Maps> & Passing it to createService Method of scheduleSummaryController
+                        List<SelectedServiceList>.from(
+                            selectedServiceList!
+                                .map(
+                                  (x) => SelectedServiceList(
+                                    serviceName: x["name"],
+                                    servicePrice: x["price"],
+                                  ),
+                                )
+                                .toList(),
+                            growable: true),
+                        scheduleSummaryController.totalPrice.value.toString(),
+                        // making single class object from Map<String,<String, dynamic>>
+                        ServiceStatus.fromMap(
+                            serviceStatus!["Service Status"]!),
+                      );
+
+                      // Showing Success Message
+                      snackbarWidget('Success', 'Service Scheduled !',
+                          AppColors.snackBarColorSuccess);
+
+                      // Go to landingPage -> HomePage and clear all route from Route Stack
+                      Get.offAll(() => LandingPage());
+                    } catch (e) {
+                      debugPrint(
+                          'error while calling createService() Method of scheduleSummaryController through ScheduleSummaryPage =  $e');
+                    }
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: Text(
+                      'Confirm This Service',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyleTheme.buttonMainText,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+              ],
+            ),
           ),
         ),
       ),
