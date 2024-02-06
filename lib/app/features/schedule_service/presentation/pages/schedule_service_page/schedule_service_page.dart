@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../../global/widget_components/appbar.dart';
 import '../../../../schedule_summary/presentation/pages/schedule_summary_page/schedule_summary_page.dart';
 import '../../controllers/schedule_service_page_controller/schedule_service_page_controller.dart';
 
@@ -24,27 +25,7 @@ class ScheduleServicePage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.backSheetColor,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.white,
-        title: const Text(
-          'Schedule Service',
-          style: AppTextStyleTheme.appBarText,
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 18.0),
-            child: CircleAvatar(
-              radius: 18,
-              child: Icon(
-                Icons.person_sharp,
-                size: 28,
-              ),
-            ),
-          )
-        ],
-      ),
+      appBar: appBar('Schedule Service'),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

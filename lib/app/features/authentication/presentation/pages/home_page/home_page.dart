@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
+        // Display Signed In User Name after Welcome text after fetching from Database
         title: const Text(
           'Welcome',
           style: AppTextStyleTheme.welcomeHeadingTitleText,

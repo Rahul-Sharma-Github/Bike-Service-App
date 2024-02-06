@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:bike_service_app/app/features/my_services/presentation/widgets/empty_widget.dart';
+import 'package:bike_service_app/app/global/widget_components/appbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,27 +26,7 @@ class MyServicesPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.backSheetColor,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.white,
-        title: const Text(
-          'My Services',
-          style: AppTextStyleTheme.appBarText,
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 18.0),
-            child: CircleAvatar(
-              radius: 18,
-              child: Icon(
-                Icons.person_sharp,
-                size: 28,
-              ),
-            ),
-          )
-        ],
-      ),
+      appBar: appBar('My Services'),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

@@ -3,6 +3,7 @@
 import 'package:bike_service_app/app/core/constants/theme/colors/colors.dart';
 import 'package:bike_service_app/app/core/constants/theme/textstyles/textstyle.dart';
 import 'package:bike_service_app/app/features/services/presentation/controllers/service_page_controller/service_page_controller.dart';
+import 'package:bike_service_app/app/global/widget_components/appbar.dart';
 import 'package:bike_service_app/app/global/widget_components/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,27 +20,7 @@ class ServicePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backSheetColor,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.white,
-        title: const Text(
-          'Services',
-          style: AppTextStyleTheme.appBarText,
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 18.0),
-            child: CircleAvatar(
-              radius: 18,
-              child: Icon(
-                Icons.person_sharp,
-                size: 28,
-              ),
-            ),
-          )
-        ],
-      ),
+      appBar: appBar('Services'),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

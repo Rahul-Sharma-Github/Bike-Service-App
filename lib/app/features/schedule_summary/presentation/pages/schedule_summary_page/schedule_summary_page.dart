@@ -1,5 +1,6 @@
 import 'package:bike_service_app/app/features/authentication/presentation/pages/landing_page/landing_page.dart';
 import 'package:bike_service_app/app/features/schedule_summary/domain/entities/service_entity.dart';
+import 'package:bike_service_app/app/global/widget_components/appbar.dart';
 import 'package:bike_service_app/app/global/widget_components/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -77,27 +78,8 @@ class ScheduleSummaryPage extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: AppColors.backSheetColor,
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.white,
-          title: const Text(
-            'Schedule Summary',
-            style: AppTextStyleTheme.appBarText,
-          ),
-          actions: const [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 18.0),
-              child: CircleAvatar(
-                radius: 18,
-                child: Icon(
-                  Icons.person_sharp,
-                  size: 28,
-                ),
-              ),
-            )
-          ],
-        ),
+        // Schedule Summary
+        appBar: appBar('Schedule Summary'),
         body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
