@@ -576,6 +576,8 @@ class ScheduleSummaryPage extends StatelessWidget {
                       snackbarWidget('Success', 'Service Scheduled !',
                           AppColors.snackBarColorSuccess);
 
+                      // Form will be Automatically Reset
+
                       // Go to landingPage -> HomePage and clear all route from Route Stack
                       Get.offAll(() => LandingPage());
                     } catch (e) {
