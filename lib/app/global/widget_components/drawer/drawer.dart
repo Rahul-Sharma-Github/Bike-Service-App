@@ -39,7 +39,15 @@ Widget drawerWidget() {
         ListTile(
           title: const Text('Sign Out'),
           trailing: const Icon(Icons.logout),
-          onTap: () {},
+          onTap: () async {
+            try {
+              await FirebaseApiInstances().authInstance.value.signOut();
+              snackbarWidget('Account', 'You are Signed Out !',
+                  AppColors.snackBarColorWarning);
+            } catch (e) {
+              debugPrint('Error while Signing Out in Drawer Widget = $e');
+            }
+          },
         ),
         const Divider(),
         ListTile(
