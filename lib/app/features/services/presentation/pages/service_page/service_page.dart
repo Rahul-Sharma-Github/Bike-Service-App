@@ -3,7 +3,7 @@
 import 'package:bike_service_app/app/core/constants/theme/colors/colors.dart';
 import 'package:bike_service_app/app/core/constants/theme/textstyles/textstyle.dart';
 import 'package:bike_service_app/app/features/services/presentation/controllers/service_page_controller/service_page_controller.dart';
-import 'package:bike_service_app/app/global/widget_components/appbar.dart';
+import 'package:bike_service_app/app/global/widget_components/app_bar/appbar.dart';
 import 'package:bike_service_app/app/global/widget_components/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
