@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:bike_service_app/app/features/my_services/presentation/widgets/empty_widget.dart';
-import 'package:bike_service_app/app/global/widget_components/appbar.dart';
+import 'package:bike_service_app/app/global/widget_components/app_bar/appbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
