@@ -2,6 +2,7 @@
 
 import 'package:bike_service_app/app/features/my_services/presentation/widgets/empty_widget.dart';
 import 'package:bike_service_app/app/global/widget_components/app_bar/appbar.dart';
+import 'package:bike_service_app/app/global/widget_components/drawer/drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,7 @@ class MyServicesPage extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.backSheetColor,
       appBar: appBar('My Services'),
-      // drawer: ,
+      drawer: drawerWidget(),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
