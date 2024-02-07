@@ -139,4 +139,11 @@ class AppTextStyleTheme {
     fontSize: 14,
     fontWeight: FontWeight.normal,
   );
+
+  // TextStyles for AlertDialog Title Text
+  static const TextStyle alertDialogTitleText = TextStyle(
+    color: Color(0xff000000),
+    fontSize: 18,
+    fontWeight: FontWeight.normal,
+  );
 }

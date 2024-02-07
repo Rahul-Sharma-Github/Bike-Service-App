@@ -1,7 +1,10 @@
 import 'package:bike_service_app/app/core/constants/theme/colors/colors.dart';
+import 'package:bike_service_app/app/core/constants/theme/textstyles/textstyle.dart';
 import 'package:bike_service_app/app/core/firebase_api_instances/firebase_api_instances.dart';
 import 'package:bike_service_app/app/global/widget_components/snackbar/snackbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 Widget drawerWidget() {
   return Drawer(
@@ -42,6 +45,7 @@ Widget drawerWidget() {
           onTap: () async {
             try {
               await FirebaseApiInstances().authInstance.value.signOut();
+
               snackbarWidget('Account', 'You are Signed Out !',
                   AppColors.snackBarColorWarning);
             } catch (e) {
@@ -53,7 +57,82 @@ Widget drawerWidget() {
         ListTile(
           title: const Text('Delete Account'),
           trailing: const Icon(Icons.person_off_outlined),
-          onTap: () {},
+          onTap: () async {
+            // Confirming From user First, after that doing the Operation
+
+            await Get.dialog(
+              name: 'Confirm',
+              AlertDialog(
+                title: const Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'All your data will be Lost !',
+                            style: AppTextStyleTheme.alertDialogTitleText,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'Do you Want to Delete your Account ?',
+                            style: AppTextStyleTheme.descriptionText,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                actions: [
+                  // Yes
+                  // Delete the Account
+                  TextButton(
+                    onPressed: () async {
+                      try {
+                        await FirebaseApiInstances()
+                            .authInstance
+                            .value
+                            .currentUser
+                            ?.delete();
+
+                        snackbarWidget(
+                            'Account',
+                            'Your account has been deleted !',
+                            AppColors.snackBarColorWarning);
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == 'requires-recent-login') {
+                          snackbarWidget(
+                              'Alert',
+                              'Please first Sign Out & then login Again !',
+                              AppColors.snackBarColorWarning);
+
+                          debugPrint(
+                              'Please Login Again to do Delete Operation !');
+                        }
+                      } catch (e) {
+                        debugPrint(
+                            'Error while Deleting User Account in Drawer Widget = $e');
+                      }
+                    },
+                    child: const Text('Yes'),
+                  ),
+                  // No
+                  // Do Not delete the Account
+                  TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: const Text('No'),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
         const Divider(),
       ],
