@@ -1,6 +1,6 @@
 import 'package:bike_service_app/app/features/authentication/presentation/pages/landing_page/landing_page.dart';
 import 'package:bike_service_app/app/features/schedule_summary/domain/entities/service_entity.dart';
-import 'package:bike_service_app/app/global/widget_components/appbar.dart';
+import 'package:bike_service_app/app/global/widget_components/app_bar/appbar.dart';
 import 'package:bike_service_app/app/global/widget_components/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
