@@ -27,7 +27,7 @@ class ScheduleServicePage extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.backSheetColor,
       appBar: appBar('Schedule Service'),
-      drawer: drawerWidget(),
+      drawer: DrawerWidget(),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

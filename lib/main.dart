@@ -78,7 +78,7 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            // if Signed In then show Home Page
+            // if Signed In then show Landing Page
             return LandingPage();
           } else {
             // if not Signed In then show SignUp Page

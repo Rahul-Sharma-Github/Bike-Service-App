@@ -11,17 +11,14 @@ PreferredSizeWidget appBar(String title) {
       title,
       style: AppTextStyleTheme.appBarText,
     ),
-    actions: [
-      InkWell(
-        onTap: () {},
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 18.0),
-          child: CircleAvatar(
-            radius: 16,
-            child: Icon(
-              Icons.person_sharp,
-              size: 20,
-            ),
+    actions: const [
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 18.0),
+        child: CircleAvatar(
+          radius: 16,
+          child: Icon(
+            Icons.person_sharp,
+            size: 20,
           ),
         ),
       ),

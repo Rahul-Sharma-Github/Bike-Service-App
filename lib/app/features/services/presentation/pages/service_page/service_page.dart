@@ -22,7 +22,7 @@ class ServicePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backSheetColor,
       appBar: appBar('Services'),
-      drawer: drawerWidget(),
+      drawer: DrawerWidget(),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

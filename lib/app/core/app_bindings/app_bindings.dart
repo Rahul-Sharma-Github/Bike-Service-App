@@ -15,6 +15,7 @@ import 'package:bike_service_app/app/features/services/data/repositories_impleme
 import 'package:bike_service_app/app/features/services/domain/repositories/service_page_repositories/service_page_repository.dart';
 import 'package:bike_service_app/app/features/services/domain/use_cases/service_page_usecase/service_page_usecase.dart';
 import 'package:bike_service_app/app/features/services/presentation/controllers/service_page_controller/service_page_controller.dart';
+import 'package:bike_service_app/app/global/widget_components/drawer/drawer_controller.dart';
 import 'package:get/get.dart';
 
 import '../../features/authentication/data/repositories_implement/signin_repositories_impl/signin_repositories_impl.dart';
@@ -70,5 +71,8 @@ class AppBindings extends Bindings {
     Get.lazyPut(() => MyServicesUseCase(Get.find()));
 
     Get.put(MyServicesController(Get.find()));
+
+    // DrawerController Binding
+    Get.lazyPut(() => DrawerControllerCommon());
   }
 }
