@@ -38,7 +38,7 @@ Future<void> main() async {
   runApp(
     // Device Preview Settings
     DevicePreview(
-      enabled: true,
+      enabled: false,
       tools: const [
         ...DevicePreview.defaultTools,
       ],

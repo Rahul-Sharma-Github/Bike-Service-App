@@ -12,7 +12,7 @@ class MyServicesRepoImpl implements MyServicesRepository {
           .firestoreInstance
           .value
           .collection('services')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .doc(FirebaseAuth.instance.currentUser?.uid)
           .collection('myservices')
           .orderBy('Booking ID', descending: true)
           .snapshots();
