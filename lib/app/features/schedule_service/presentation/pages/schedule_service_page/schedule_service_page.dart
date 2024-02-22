@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../global/widget_components/app_bar/appbar.dart';
-import '../../../../../global/widget_components/drawer/drawer.dart';
 import '../../../../schedule_summary/presentation/pages/schedule_summary_page/schedule_summary_page.dart';
 import '../../controllers/schedule_service_page_controller/schedule_service_page_controller.dart';
 
