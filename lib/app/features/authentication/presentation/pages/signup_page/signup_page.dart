@@ -47,7 +47,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   child: SingleChildScrollView(
                     child: Form(
-                      key: signUpController.formKey.value,
+                      key: signUpController.formKeySignUp.value,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -215,11 +215,13 @@ class SignUpPage extends StatelessWidget {
                             ),
                             onPressed: () async {
                               // Checking if Form is Valid or not
-                              if (signUpController.formKey.value.currentState!
+                              if (signUpController
+                                  .formKeySignUp.value.currentState!
                                   .validate()) {
                                 // if Form is valid without any error
                                 // then we save the current state of form with values
-                                signUpController.formKey.value.currentState!
+                                signUpController
+                                    .formKeySignUp.value.currentState!
                                     .save();
 
                                 // Saving Form Field values

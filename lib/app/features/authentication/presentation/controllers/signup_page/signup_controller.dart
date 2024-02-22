@@ -15,7 +15,7 @@ class SignUpController extends GetxController {
   final passwordController = TextEditingController().obs;
 
   // Form Global Key
-  final formKey = GlobalKey<FormState>().obs;
+  final formKeySignUp = GlobalKey<FormState>().obs;
 
   /// saving Form values like -  User Name, Email, Password
 

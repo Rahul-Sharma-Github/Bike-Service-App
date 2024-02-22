@@ -15,7 +15,7 @@ class SignInController extends GetxController {
   final passwordController = TextEditingController().obs;
 
   // Form Global Key
-  final formKey = GlobalKey<FormState>().obs;
+  final formKeySignIn = GlobalKey<FormState>().obs;
 
   /// saving Form values like -  User Email, Password
 
