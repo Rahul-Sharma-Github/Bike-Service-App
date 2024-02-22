@@ -1,3 +1,4 @@
+import 'package:bike_service_app/app/core/constants/theme/colors/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,9 @@ class SignInRepositoryImpl implements SignInRepositories {
         password: user.password,
       );
       Get.back();
-      Get.snackbar('User Signed In Successfully', '', colorText: Colors.white);
+      Get.snackbar('User Signed In Successfully', '',
+          colorText: Colors.white,
+          backgroundColor: AppColors.snackBarColorSuccess);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-credential') {
         Get.snackbar('Invalid', 'Invalid Email & Password. Check Again !',

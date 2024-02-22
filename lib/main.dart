@@ -55,6 +55,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // GetMaterialApp to access all GetX functionality in our App
     return GetMaterialApp(
+      initialRoute: '/',
       // changing app's settings, so Device Preview can run properly
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),

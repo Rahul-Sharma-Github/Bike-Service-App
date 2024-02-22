@@ -52,8 +52,9 @@ class DrawerWidget extends StatelessWidget {
             trailing: const Icon(Icons.logout),
             onTap: () async {
               try {
+                // Signing Out the Current User
                 await FirebaseApiInstances().authInstance.value.signOut();
-
+                Get.back(closeOverlays: true);
                 snackbarWidget('Account', 'You are Signed Out !',
                     AppColors.snackBarColorWarning);
               } catch (e) {
