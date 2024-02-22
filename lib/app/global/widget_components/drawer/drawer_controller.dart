@@ -10,6 +10,7 @@ class DrawerControllerCommon extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    // we are calling getUserName() method when the Controller initialized
     getUserName();
   }
 
