@@ -13,7 +13,7 @@ class DrawerControllerCommon extends GetxController {
     getUserName();
   }
 
-  // Method to get User Name from Database
+  // Method to get currently signedIn User's Name from Database
   void getUserName() {
     FirebaseApiInstances()
         .firestoreInstance
@@ -26,7 +26,8 @@ class DrawerControllerCommon extends GetxController {
         final document = value.data();
         userName.value = document?['name'];
       },
-      onError: (e) => debugPrint("Error getting document: $e"),
+      onError: (e) => debugPrint(
+          "Error in getUserName() Method, while getting User Name from Database = $e"),
     );
   }
 }
