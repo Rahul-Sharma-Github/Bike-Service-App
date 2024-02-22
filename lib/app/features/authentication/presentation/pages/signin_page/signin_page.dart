@@ -179,6 +179,8 @@ class SignInPage extends StatelessWidget {
                               // Checking if Form is Valid or not
                               if (signInController.formKey.value.currentState!
                                   .validate()) {
+                                // Debugging
+                                debugPrint('Current Form State is valid');
                                 // if Form is valid without any error
                                 // then we save the current state of form with values
                                 signInController.formKey.value.currentState!
