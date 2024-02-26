@@ -23,7 +23,7 @@ class AppTextStyleTheme {
   // TextStyles for TextFormField Label
   static const TextStyle textFormFieldLabelText = TextStyle(
     color: Color(0xff000000),
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: FontWeight.w400,
   );
 

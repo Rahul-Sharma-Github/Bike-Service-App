@@ -33,7 +33,7 @@ class SignUpPage extends StatelessWidget {
                 subtitle: 'Sign Up',
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               // TextFormFields
               Expanded(
