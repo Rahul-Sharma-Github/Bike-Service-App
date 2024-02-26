@@ -19,128 +19,140 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backSheetColor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        // Display Signed In User Name after Welcome text after fetching from Database
-        title: const Text(
-          'Welcome',
-          style: AppTextStyleTheme.welcomeHeadingTitleText,
-        ),
-      ),
-      body: Container(
-        height: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const SizedBox(
-              height: 16,
-            ),
-            Container(
-              child: const Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Ganpati Motors',
-                        style: AppTextStyleTheme.welcomeHeadingSubtitleText,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(6.0),
-                        child: Text(
-                          '"Your Bike\'s Best Companion"',
-                          style: AppTextStyleTheme
-                              .welcomeHeadingSubtitleDescriptionText,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+      body: SafeArea(
+        child: Container(
+          height: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                height: 16,
               ),
-            ),
-            const SizedBox(
-              height: 14,
-            ),
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 24.0, vertical: 14.0),
-                decoration: const BoxDecoration(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(32.0)),
-                  color: AppColors.frontSheetColor,
-                ),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.asset(AssetPaths.bikeImage, scale: 1.8),
-                      ),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                              child: Text(
-                            'Get ready for a smoother ride!',
-                            textAlign: TextAlign.center,
-                          )),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 22,
-                      ),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 24),
-                              child: Text(
-                                'Ganpati Motor Service is here to make bike maintenance hassle-free. From quick fixes to regular check-ups, we\'ve got you covered',
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 34,
-                      ),
-                      // Get Started Button
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              AppColors.mainButtonColor),
-                        ),
-                        onPressed: () {
-                          Get.to(() => ServicePage());
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 16),
+              // Heading
+              Container(
+                child: const Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
                           child: Text(
-                            'Get Started  >',
-                            style: AppTextStyleTheme.buttonMainText,
+                            'Ganpati Motors',
+                            textAlign: TextAlign.center,
+                            style: AppTextStyleTheme.welcomeHeadingSubtitleText,
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                    ],
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(6.0),
+                            child: Text(
+                              '"Your Bike\'s Best Companion"',
+                              textAlign: TextAlign.center,
+                              style: AppTextStyleTheme
+                                  .welcomeHeadingSubtitleDescriptionText,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 24.0, vertical: 14.0),
+                  decoration: const BoxDecoration(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(32.0)),
+                    color: AppColors.frontSheetColor,
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Image.asset(AssetPaths.bikeImage, scale: 2),
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                                child: Text(
+                              'Get ready for a smoother ride!',
+                              textAlign: TextAlign.center,
+                            )),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 18,
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 24),
+                                child: Text(
+                                  'Ganpati Motor Service is here to make bike maintenance hassle-free. From quick fixes to regular check-ups, we\'ve got you covered',
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        // Get Started Button
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                AppColors.mainButtonColor),
+                          ),
+                          onPressed: () {
+                            Get.to(() => ServicePage());
+                          },
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 16),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Get Started',
+                                  style: AppTextStyleTheme.buttonMainText,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Icon(Icons.arrow_right_alt_sharp,
+                                    color: Colors.white),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
+      // Bottom Navigation Bar
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
           showSelectedLabels: true,
