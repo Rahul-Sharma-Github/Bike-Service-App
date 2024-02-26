@@ -569,10 +569,19 @@ class ScheduleSummaryPage extends StatelessWidget {
                   },
                   child: const Padding(
                     padding: EdgeInsets.symmetric(vertical: 16),
-                    child: Text(
-                      'Confirm This Service',
-                      textAlign: TextAlign.center,
-                      style: AppTextStyleTheme.buttonMainText,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Confirm This Service',
+                          style: AppTextStyleTheme.buttonMainText,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(Icons.arrow_right_alt_sharp, color: Colors.white),
+                      ],
                     ),
                   ),
                 ),
