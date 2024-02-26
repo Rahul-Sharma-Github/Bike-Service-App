@@ -30,7 +30,7 @@ class HeaderWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 25,
+            height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -10,8 +10,8 @@ class AppTextStyleTheme {
 
   static const TextStyle welcomeHeadingSubtitleText = TextStyle(
     color: Color(0xffFFFFFF),
-    fontSize: 26,
-    fontWeight: FontWeight.w500,
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
   );
 
   static const TextStyle welcomeHeadingSubtitleDescriptionText = TextStyle(
