@@ -24,28 +24,36 @@ class SignInRepositoryImpl implements SignInRepositories {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-credential') {
         Get.snackbar('Invalid', 'Invalid Email & Password. Check Again !',
-            colorText: Colors.white);
+            colorText: Colors.white,
+            backgroundColor: AppColors.snackBarColorWarning);
         debugPrint('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         Get.snackbar('wrong-password', 'Wrong password provided for that user.',
-            colorText: Colors.white);
+            colorText: Colors.white,
+            backgroundColor: AppColors.snackBarColorWarning);
         debugPrint('Wrong password provided for that user.');
       } else if (e.code == 'invalid-email') {
         Get.snackbar('invalid-email', 'The email address is not valid.',
-            colorText: Colors.white);
+            colorText: Colors.white,
+            backgroundColor: AppColors.snackBarColorWarning);
         debugPrint('The email address is not valid.');
       } else if (e.code == 'user-disabled') {
         Get.snackbar('user-disabled',
             'The user corresponding to the given email has been disabled.',
-            colorText: Colors.white);
+            colorText: Colors.white,
+            backgroundColor: AppColors.snackBarColorWarning);
         debugPrint(
             'The user corresponding to the given email has been disabled.');
       } else {
-        Get.snackbar('Other Sign In Error', '$e', colorText: Colors.white);
+        Get.snackbar('Other Sign In Error', '$e',
+            colorText: Colors.white,
+            backgroundColor: AppColors.snackBarColorWarning);
         debugPrint('Other Sign In Error = $e');
       }
     } catch (e) {
-      Get.snackbar('Other Sign In Error', '$e', colorText: Colors.white);
+      Get.snackbar('Other Sign In Error', '$e',
+          colorText: Colors.white,
+          backgroundColor: AppColors.snackBarColorWarning);
       debugPrint('Other Sign In Error = $e');
     }
   }
