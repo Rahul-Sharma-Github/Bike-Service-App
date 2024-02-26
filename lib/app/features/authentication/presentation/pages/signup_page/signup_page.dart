@@ -55,14 +55,14 @@ class SignUpPage extends StatelessWidget {
                         children: [
                           // Name
                           Container(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 const Row(
                                   children: [
-                                    Text('Enter User Name',
+                                    Text('User Name',
                                         style: AppTextStyleTheme
                                             .textFormFieldLabelText),
                                   ],
@@ -75,8 +75,8 @@ class SignUpPage extends StatelessWidget {
                                       signUpController.nameController.value,
                                   keyboardType: TextInputType.name,
                                   decoration: const InputDecoration(
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 15),
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 0, horizontal: 5),
                                     filled: true,
                                     fillColor: AppColors.inputTextBoxInnerColor,
                                     border: OutlineInputBorder(),
@@ -94,14 +94,14 @@ class SignUpPage extends StatelessWidget {
                           ),
                           // Email
                           Container(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 const Row(
                                   children: [
-                                    Text('Enter Email ID',
+                                    Text('Email ID',
                                         style: AppTextStyleTheme
                                             .textFormFieldLabelText),
                                   ],
@@ -114,8 +114,8 @@ class SignUpPage extends StatelessWidget {
                                       signUpController.emailController.value,
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: const InputDecoration(
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 15),
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 0, horizontal: 5),
                                     filled: true,
                                     fillColor: AppColors.inputTextBoxInnerColor,
                                     border: OutlineInputBorder(),
@@ -134,14 +134,14 @@ class SignUpPage extends StatelessWidget {
                           ),
                           // Password
                           Container(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 const Row(
                                   children: [
-                                    Text('Enter Password',
+                                    Text('Password',
                                         style: AppTextStyleTheme
                                             .textFormFieldLabelText),
                                   ],
@@ -154,8 +154,8 @@ class SignUpPage extends StatelessWidget {
                                       signUpController.passwordController.value,
                                   keyboardType: TextInputType.visiblePassword,
                                   decoration: const InputDecoration(
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 15),
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 0, horizontal: 5),
                                     filled: true,
                                     fillColor: AppColors.inputTextBoxInnerColor,
                                     border: OutlineInputBorder(),
@@ -174,7 +174,7 @@ class SignUpPage extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(
-                            height: 30,
+                            height: 20,
                           ),
                           // Sign In Page Link
                           Padding(
@@ -189,7 +189,7 @@ class SignUpPage extends StatelessWidget {
                                   child: const Text(
                                     'Sign In',
                                     style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -199,13 +199,13 @@ class SignUpPage extends StatelessWidget {
                                 ),
                                 const Text(
                                   'If you already have Account !',
-                                  style: TextStyle(fontSize: 14),
+                                  style: TextStyle(fontSize: 12),
                                 ),
                               ],
                             ),
                           ),
                           const SizedBox(
-                            height: 30,
+                            height: 20,
                           ),
                           // Sign Up Button
                           ElevatedButton(
