@@ -29,11 +29,11 @@ class SignInPage extends StatelessWidget {
             children: [
               // Header
               const HeaderWidget(
-                title: 'Welcome',
+                title: 'WELCOME',
                 subtitle: 'Sign In',
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               // TextFormFields
               Expanded(
@@ -55,14 +55,14 @@ class SignInPage extends StatelessWidget {
                         children: [
                           // Email
                           Container(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 const Row(
                                   children: [
-                                    Text('Enter Email ID',
+                                    Text('Email ID',
                                         style: AppTextStyleTheme
                                             .textFormFieldLabelText),
                                   ],
@@ -75,8 +75,8 @@ class SignInPage extends StatelessWidget {
                                       signInController.emailController.value,
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: const InputDecoration(
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 15),
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 0, horizontal: 5),
                                     filled: true,
                                     fillColor: AppColors.inputTextBoxInnerColor,
                                     border: OutlineInputBorder(),
@@ -96,14 +96,14 @@ class SignInPage extends StatelessWidget {
 
                           // Password
                           Container(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 const Row(
                                   children: [
-                                    Text('Enter Password',
+                                    Text('Password',
                                         style: AppTextStyleTheme
                                             .textFormFieldLabelText),
                                   ],
@@ -116,8 +116,8 @@ class SignInPage extends StatelessWidget {
                                       signInController.passwordController.value,
                                   keyboardType: TextInputType.visiblePassword,
                                   decoration: const InputDecoration(
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 15),
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 0, horizontal: 5),
                                     filled: true,
                                     fillColor: AppColors.inputTextBoxInnerColor,
                                     border: OutlineInputBorder(),
@@ -151,7 +151,7 @@ class SignInPage extends StatelessWidget {
                                   child: const Text(
                                     'Sign Up',
                                     style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -161,13 +161,13 @@ class SignInPage extends StatelessWidget {
                                 ),
                                 const Text(
                                   'If you are New !',
-                                  style: TextStyle(fontSize: 14),
+                                  style: TextStyle(fontSize: 12),
                                 ),
                               ],
                             ),
                           ),
                           const SizedBox(
-                            height: 30,
+                            height: 20,
                           ),
                           // Sign Up Button
                           ElevatedButton(
@@ -215,7 +215,7 @@ class SignInPage extends StatelessWidget {
                               }
                             },
                             child: const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 16),
+                              padding: EdgeInsets.symmetric(vertical: 14),
                               child: Text(
                                 'Sign In',
                                 style: AppTextStyleTheme.buttonMainText,

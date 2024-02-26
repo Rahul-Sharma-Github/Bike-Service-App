@@ -234,7 +234,7 @@ class SignUpPage extends StatelessWidget {
                               } else {}
                             },
                             child: const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 16),
+                              padding: EdgeInsets.symmetric(vertical: 14),
                               child: Text(
                                 'Sign Up',
                                 style: AppTextStyleTheme.buttonMainText,
