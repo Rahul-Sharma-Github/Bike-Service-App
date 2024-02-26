@@ -29,7 +29,7 @@ class SignUpPage extends StatelessWidget {
             children: [
               // Header
               const HeaderWidget(
-                title: 'Welcome',
+                title: 'WELCOME',
                 subtitle: 'Sign Up',
               ),
               const SizedBox(
