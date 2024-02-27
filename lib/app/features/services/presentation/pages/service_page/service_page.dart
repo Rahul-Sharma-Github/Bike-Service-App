@@ -62,13 +62,14 @@ class ServicePage extends StatelessWidget {
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 15),
                         color: AppColors.serviceCardColor,
-                        elevation: 4,
                         child: Row(
                           children: [
                             Expanded(
                               child: Container(
-                                child: Image.asset(servicePageController
-                                    .serviceListData[index]["image"]),
+                                child: Image.asset(
+                                    servicePageController.serviceListData[index]
+                                        ["image"],
+                                    scale: 1),
                               ),
                             ),
                             Expanded(

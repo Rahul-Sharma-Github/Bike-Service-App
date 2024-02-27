@@ -31,7 +31,7 @@ class AppTextStyleTheme {
   static const TextStyle headingMainTitleText = TextStyle(
     color: Color(0xff000000),
     fontSize: 18,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
   );
 
   static const TextStyle headingSecondaryTitleText = TextStyle(
@@ -43,8 +43,8 @@ class AppTextStyleTheme {
   // TextStyles for Card Text
   static const TextStyle cardTitleText = TextStyle(
     color: Color(0xff000000),
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
   );
 
   static const TextStyle cardButtonText = TextStyle(
