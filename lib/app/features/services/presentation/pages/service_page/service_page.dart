@@ -163,14 +163,16 @@ class ServicePage extends StatelessWidget {
                       servicePageController.customerTestimonialListData.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      height: 350,
+                      // height: 300,
                       width: 250,
                       child: Card(
+                          elevation: 3,
                           surfaceTintColor: AppColors.backSheetColor,
                           shadowColor: AppColors.serviceCardColor,
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(12.0),
                             child: Column(
                               children: [
                                 const Expanded(
