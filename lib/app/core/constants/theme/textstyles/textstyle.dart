@@ -129,8 +129,8 @@ class AppTextStyleTheme {
   // TextStyles for App Bar Text
   static const TextStyle appBarText = TextStyle(
     color: Color(0xffFFFFFF),
-    fontSize: 22,
-    fontWeight: FontWeight.normal,
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
   );
 
   // TextStyles for Description Text
