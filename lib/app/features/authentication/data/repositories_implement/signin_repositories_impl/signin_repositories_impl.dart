@@ -1,4 +1,5 @@
 import 'package:bike_service_app/app/core/constants/theme/colors/colors.dart';
+import 'package:bike_service_app/app/global/widget_components/snackbar/snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,42 +19,44 @@ class SignInRepositoryImpl implements SignInRepositories {
         password: user.password,
       );
       Get.back();
-      Get.snackbar('User Signed In Successfully', '',
-          colorText: Colors.white,
-          backgroundColor: AppColors.snackBarColorSuccess);
+      snackbarWidget(
+          'User Signed In Successfully', '', AppColors.snackBarColorSuccess);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-credential') {
-        Get.snackbar('Invalid', 'Invalid Email & Password. Check Again !',
-            colorText: Colors.white,
-            backgroundColor: AppColors.snackBarColorWarning);
+        snackbarWidget('Invalid', 'Invalid Email & Password. Check Again !',
+            AppColors.snackBarColorWarning);
+
         debugPrint('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        Get.snackbar('wrong-password', 'Wrong password provided for that user.',
-            colorText: Colors.white,
-            backgroundColor: AppColors.snackBarColorWarning);
+        snackbarWidget(
+            'wrong-password',
+            'Wrong password provided for that user.',
+            AppColors.snackBarColorWarning);
+
         debugPrint('Wrong password provided for that user.');
       } else if (e.code == 'invalid-email') {
-        Get.snackbar('invalid-email', 'The email address is not valid.',
-            colorText: Colors.white,
-            backgroundColor: AppColors.snackBarColorWarning);
+        snackbarWidget('invalid-email', 'The email address is not valid.',
+            AppColors.snackBarColorWarning);
+
         debugPrint('The email address is not valid.');
       } else if (e.code == 'user-disabled') {
-        Get.snackbar('user-disabled',
+        snackbarWidget(
+            'user-disabled',
             'The user corresponding to the given email has been disabled.',
-            colorText: Colors.white,
-            backgroundColor: AppColors.snackBarColorWarning);
+            AppColors.snackBarColorWarning);
+
         debugPrint(
             'The user corresponding to the given email has been disabled.');
       } else {
-        Get.snackbar('Other Sign In Error', '$e',
-            colorText: Colors.white,
-            backgroundColor: AppColors.snackBarColorWarning);
+        snackbarWidget(
+            'Other Sign In Error', '$e', AppColors.snackBarColorWarning);
+
         debugPrint('Other Sign In Error = $e');
       }
     } catch (e) {
-      Get.snackbar('Other Sign In Error', '$e',
-          colorText: Colors.white,
-          backgroundColor: AppColors.snackBarColorWarning);
+      snackbarWidget(
+          'Other Sign In Error', '$e', AppColors.snackBarColorWarning);
+
       debugPrint('Other Sign In Error = $e');
     }
   }
