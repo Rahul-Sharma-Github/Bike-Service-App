@@ -19,8 +19,15 @@ class SignInRepositoryImpl implements SignInRepositories {
         password: user.password,
       );
       Get.back();
-      snackbarWidget(
-          'User Signed In Successfully', '', AppColors.snackBarColorSuccess);
+      Get.snackbar(
+        '',
+        '',
+        titleText: const Text('Signed In !'),
+        messageText: Container(),
+        backgroundColor: AppColors.snackBarColorSuccess,
+      );
+      // snackbarWidget(
+      //     'User Signed In Successfully', '', AppColors.snackBarColorSuccess);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-credential') {
         snackbarWidget('Invalid', 'Invalid Email & Password. Check Again !',
