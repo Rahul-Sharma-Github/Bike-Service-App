@@ -169,7 +169,7 @@ class SignInPage extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          // Sign Up Button
+                          // Sign In Button
                           ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
