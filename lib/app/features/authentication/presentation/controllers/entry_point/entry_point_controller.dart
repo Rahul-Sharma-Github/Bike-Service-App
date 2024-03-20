@@ -21,7 +21,7 @@ class EntryPointController extends GetxController {
         .then(
       (value) {
         final document = value.data();
-        if (document?['admin'] == 'false') {
+        if (document?['admin'] == false) {
           isAdmin.value = false;
         } else {
           isAdmin.value = true;
