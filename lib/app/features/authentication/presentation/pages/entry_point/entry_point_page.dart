@@ -1,13 +1,18 @@
+import 'package:bike_service_app/app/features/authentication/presentation/controllers/entry_point/entry_point_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../admin_panel/dashboard/presentation/pages/dashboard_home_page.dart';
 import '../landing_page/landing_page.dart';
 import '../signup_page/signup_page.dart';
 
 class EntryPointPage extends StatelessWidget {
-  const EntryPointPage({super.key});
+  EntryPointPage({super.key});
 
+  // controller
+  final EntryPointController entryPointController =
+      Get.put(EntryPointController());
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -51,7 +56,9 @@ class EntryPointPage extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             // if Signed In then show Landing Page
-            return LandingPage();
+            return Obx(() => entryPointController.isAdmin.value
+                ? const DashboardHomePage()
+                : LandingPage());
           } else {
             // if not Signed In then show SignUp Page
             return SignUpPage();

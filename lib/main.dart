@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
       initialBinding: AppBindings(),
 
       // First Page to show on screen
-      home: const EntryPointPage(),
+      home: EntryPointPage(),
     );
   }
 }

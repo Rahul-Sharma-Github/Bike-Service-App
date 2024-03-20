@@ -225,6 +225,26 @@ class SignInPage extends StatelessWidget {
                           const SizedBox(
                             height: 30,
                           ),
+
+                          // Sign In as ADMIN Button
+
+                          // ElevatedButton(
+                          //   style: ButtonStyle(
+                          //     backgroundColor: MaterialStateProperty.all(
+                          //         AppColors.knowMoreButtonColor),
+                          //   ),
+                          //   onPressed: () {},
+                          //   child: const Padding(
+                          //     padding: EdgeInsets.symmetric(vertical: 14),
+                          //     child: Text(
+                          //       'Go to Admin Panel',
+                          //       style: AppTextStyleTheme.buttonMainText,
+                          //     ),
+                          //   ),
+                          // ),
+                          const SizedBox(
+                            height: 30,
+                          ),
                         ],
                       ),
                     ),
