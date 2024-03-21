@@ -19,7 +19,7 @@ ServiceEntity serviceEntityFromMap(String str) =>
 String serviceEntityToMap(ServiceEntity data) => json.encode(data.toMap());
 
 class ServiceEntity {
-  final String bookingId;
+  final int bookingId;
   final String bikeName;
   final String bikeNumber;
   final String mobileNumber;

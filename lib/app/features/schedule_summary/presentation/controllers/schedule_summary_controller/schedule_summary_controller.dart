@@ -12,7 +12,7 @@ class ScheduleSummaryController extends GetxController {
   // Method to pass all form values to the ServiceEntity Model class to instanciate it &
   // passing the Instance of ServiceEntity Model class to createServiceUseCase class
   Future<void> createService(
-      String bookingId,
+      int bookingId,
       String bikeName,
       String bikeNumber,
       String mobileNumber,

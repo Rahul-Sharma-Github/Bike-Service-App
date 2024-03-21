@@ -529,7 +529,7 @@ class ScheduleSummaryPage extends StatelessWidget {
                     // Sending Values/Arguments to createService() Method of scheduleSummaryController to create a new Service
                     try {
                       await scheduleSummaryController.createService(
-                        bookingId.toString(),
+                        bookingId!,
                         bikeName!,
                         bikeNumber!,
                         mobileNumber!,
