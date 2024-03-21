@@ -127,8 +127,7 @@ class MyServicesPage extends StatelessWidget {
                                                     ),
                                                     Expanded(
                                                       child: Text(
-                                                        docSnapshot?[
-                                                            'Booking ID'],
+                                                        '${docSnapshot?['Booking ID'].toString()}',
                                                         style: AppTextStyleTheme
                                                             .scheduleSummaryValueText,
                                                         textAlign:
