@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace
 
-import 'package:bike_service_app/app/core/constants/theme/textstyles/textstyle.dart';
 import 'package:bike_service_app/app/global/widget_components/app_bar/appbar.dart';
 import 'package:flutter/material.dart';
 
