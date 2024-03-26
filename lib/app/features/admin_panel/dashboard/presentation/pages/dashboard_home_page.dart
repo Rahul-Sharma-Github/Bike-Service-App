@@ -27,6 +27,8 @@ class DashboardHomePage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              //
+              //
               // Manage Section
               const Text(
                 'Manage',
@@ -178,8 +180,8 @@ class DashboardHomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              //
               const SizedBox(height: 40.0),
+              //
               //
               // Analysis Section
               const Text(
