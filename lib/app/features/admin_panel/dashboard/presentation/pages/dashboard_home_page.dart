@@ -33,11 +33,12 @@ class DashboardHomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 20.0),
-              Container(
-                height: MediaQuery.of(context).size.height / 2.5,
+              Flexible(
+                fit: FlexFit.loose,
                 child: GridView.count(
                   childAspectRatio: 0.7,
                   shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
                   mainAxisSpacing: 15.0,
                   crossAxisSpacing: 15.0,
                   crossAxisCount: 2,
@@ -186,11 +187,12 @@ class DashboardHomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 20.0),
-              Container(
-                height: MediaQuery.of(context).size.height / 2.5,
+              Flexible(
+                fit: FlexFit.loose,
                 child: GridView.count(
                   childAspectRatio: 0.7,
                   shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
                   mainAxisSpacing: 15.0,
                   crossAxisSpacing: 15.0,
                   crossAxisCount: 2,
@@ -398,6 +400,7 @@ class DashboardHomePage extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 20.0),
             ],
           ),
         ),
