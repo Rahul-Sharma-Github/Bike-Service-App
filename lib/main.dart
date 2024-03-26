@@ -21,7 +21,7 @@ import 'package:bike_service_app/firebase_options.dart';
 // Firebase Firestore Package
 // import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'app/features/authentication/presentation/pages/entry_point/entry_point_page.dart';
+import 'app/features/client_panel/authentication/presentation/pages/entry_point/entry_point_page.dart';
 
 //// Page Imports
 
